@@ -37,9 +37,9 @@ defined( 'ABSPATH' ) or exit("Plugin must not be accessed directly.");
  */
 
 // Enqueue CSS styles for artefact display
-add_action( 'wp_enqueue_scripts', 'fitz_collection_load_styles' );
+add_action( 'wp_enqueue_scripts', 'fitzcol_load_styles' );
 // Enqueue CSS styles for shortcode popup form display
-add_action( 'admin_enqueue_scripts', 'fitz_collection_form_styles' );
+add_action( 'admin_enqueue_scripts', 'fitzcol_form_styles' );
 
 /**
  * Load CSS styles for artefact display
