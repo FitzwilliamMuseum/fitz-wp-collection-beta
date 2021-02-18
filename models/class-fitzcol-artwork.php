@@ -13,13 +13,14 @@ class Fitzcol_Artwork
     private $id;
     private $accession_number;
     private $object_type;
-    private $broad_period;
-    private $filename;
-    private $image_directory;
-    private $image_label;
+    private $large_image;
+    private $medium_image;
+    private $original_image;
+    private $preview_image;
     private $image_copyright_holder;
     private $image_license;
     private $image_license_acronym;
+    private $title;
 
     private $cc_license_acronyms = array(
         'Attribution-NonCommercial-ShareAlike License' => 'BY-NC-SA',
@@ -33,16 +34,22 @@ class Fitzcol_Artwork
         $this->id = $data[ 'identifier' ][1]['priref'];
         $this->accession_number = $data[ 'identifier' ][0]['accession_number'];
         $this->object_type = $data[ 'summary_title' ];
-        $this->broad_period = $data[ 'broadperiod' ];
-        $this->filename = $data[ 'filename' ];
-        $this->image_directory = $data[ 'imagedir' ];
-        $this->image_label = $data[ 'imageLabel' ];
-        $this->image_copyright_holder = $data[ 'imageCopyrightHolder' ];
+        $this->medium_image = $data[ 'multimedia' ][0]['processed']['mid'][0]['location'];
+        $this->large_image = $data[ 'multimedia' ][0]['processed']['large'][0]['location'];
+        $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview'][0]['location'];
+        $this->original_image = $data[ 'multimedia' ][0]['processed']['original'][0]['location'];
+        $this->image_copyright_holder = $data[ 'legal' ]['credit_line'];
         $this->image_license = $data[ 'imageLicense' ];
         $this->image_license_acronym = $this->lookup_license_acronym( $data[ 'imageLicense' ] );
-
+        $this->title = $data['title'][0]['value'];
     }
-
+    /**
+     * @return string
+     */
+    public function get_title()
+    {
+        return $this->title;
+    }
     /**
      * @return string
      */
@@ -67,37 +74,36 @@ class Fitzcol_Artwork
         return $this->object_type;
     }
 
-    /**
-     * @return string
-     */
-    public function get_broad_period()
-    {
-        return $this->broad_period;
-    }
 
     /**
      * @return string
      */
-    public function get_filename()
+    public function get_medium_image()
     {
-        return $this->filename;
+        return $this->medium_image;
     }
-
     /**
      * @return string
      */
-    public function get_image_directory()
+    public function get_large_image()
     {
-        return $this->image_directory;
+        return $this->large_image;
     }
-
     /**
      * @return string
      */
-    public function get_image_label()
+    public function get_preview_image()
     {
-        return $this->image_label;
+        return $this->preview_image;
     }
+    /**
+     * @return string
+     */
+    public function get_original_image()
+    {
+        return $this->original_image;
+    }
+
 
     /**
      * @return string

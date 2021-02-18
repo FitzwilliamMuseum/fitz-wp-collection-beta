@@ -76,8 +76,7 @@ class Fitzcol_Caption_Creator
                     return $caption;
                 //Otherwise, create an automatic caption
                 } else {
-                    $text = sprintf("%s %s",
-                        $this->get_data_object()->get_broad_period(),
+                    $text = sprintf("%s",
                         $this->get_data_object()->get_object_type()
                     );
                     $caption = $this->title_string( $text );
