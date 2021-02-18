@@ -240,23 +240,26 @@ class Fitzcol_Artwork_Controller
             echo $this->get_artwork_record()->get_accession_number();
             echo $this->get_artwork_record()->get_object_type();
             echo $this->get_artwork_record()->get_medium_image();
+
             //and there is a 200 OK response from the finds.org.uk server
-            // if ( $artwork_data['type']['base'] === 'object' ) {
-            //     $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
-            //     if ( !is_null( $this->get_artwork_record()->get_medium_image() ) ) {
-            //         //create a caption
-            //         $caption = new Fitzcol_Caption_Creator('artwork',
-            //             $this->get_artwork_record(),
-            //             $this->get_caption_option(),
-            //             $this->get_caption_text()
-            //         );
-            //         $this->set_caption_text_display($caption->create_caption());
-            //         //display the artwork figure
-            //         return $this->load_artwork_template_dependency();
-            //     } else { //if there is no image available
-            //         $this->set_error_message( "No image is available on this record." );
-            //         return $this->display_error();
-            //     }
+            if ( $artwork_data['type']['base'] === 'object' ) {
+                //create a new artwork record from the data
+                $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
+                //if there is an image available
+                // if ( !is_null( $this->get_artwork_record()->get_image_directory() ) ) {
+                //     //create a caption
+                //     $caption = new Fitzcol_Caption_Creator('artwork',
+                //         $this->get_artwork_record(),
+                //         $this->get_caption_option(),
+                //         $this->get_caption_text()
+                //     );
+                //     $this->set_caption_text_display($caption->create_caption());
+                //     //display the artwork figure
+                //     return $this->load_artwork_template_dependency();
+                // } else { //if there is no image available
+                //     $this->set_error_message( "No image is available on this record." );
+                //     return $this->display_error();
+                // }
             } else { //if there is no valid json response
                 $this->set_error_message( $artwork_data['error message'] );
                 return $this->display_error();
