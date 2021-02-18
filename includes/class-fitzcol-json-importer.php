@@ -39,7 +39,7 @@ class Fitzcol_Json_Importer
     }
 
     private function create_json_url() {
-        return sprintf('%s://%s/database/artefacts/record/id/%s/format/json',
+        return sprintf('%s://%s/object/id/%s/json',
             Fitzcol_Artefact_Controller::FITZCOL_REQUIRED_SCHEME,
             Fitzcol_Artefact_Controller::FITZCOL_REQUIRED_HOST,
             $this->get_record_id()
@@ -62,9 +62,9 @@ class Fitzcol_Json_Importer
             if ($response_code == 200) {
                 $json_body = wp_remote_retrieve_body( $response );
                 $json_object = json_decode( $json_body, true );
-                $json_as_php_array = $json_object[ 'record' ][ 0 ];
-                $json_as_php_array['record'] = 'artefact';
-                return $json_as_php_array;
+                // $json_as_php_array = $json_object[ 'record' ][ 0 ];
+                // $json_as_php_array['record'] = 'artefact';
+                return $json_object;
             } else {
                 return $this->report_error( $response_code );
             }
