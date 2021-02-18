@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Finds.org.uk Artefacts and Coins
+Plugin Name: Fitzwilliam Museum Collection Data for Wordpress
 Description: Display up-to-date artefacts and coins data from the Portable Antiquities Scheme (finds.org.uk) on your Wordpress blog.
 Version:     1.0.0
 Author:      Mary Chester-Kadwell
