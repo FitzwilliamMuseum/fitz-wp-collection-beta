@@ -36,13 +36,13 @@ defined( 'ABSPATH' ) or exit("Plugin must not be accessed directly.");
  * ----------
  */
 
-// Enqueue CSS styles for artefact display
+// Enqueue CSS styles for artwork display
 add_action( 'wp_enqueue_scripts', 'fitzcol_load_styles' );
 // Enqueue CSS styles for shortcode popup form display
 add_action( 'admin_enqueue_scripts', 'fitzcol_form_styles' );
 
 /**
- * Load CSS styles for artefact display
+ * Load CSS styles for artwork display
  */
 function fitzcol_load_styles() {
     wp_register_style( 'fitzcol-display-style', plugins_url('/css/fitzcol-style.css', __FILE__) );
@@ -61,18 +61,18 @@ function fitzcol_load_form_styles() {
 
 /**
  * -------------------
- * SHORTCODE: ARTEFACT
+ * SHORTCODE: artwork
  * -------------------
  */
 
-// Register a shortcode [artefact] to display an artefact record in posts
+// Register a shortcode [artwork] to display an artwork record in posts
 add_shortcode( 'artwork', 'fitzcol_artwork' );
 
 /**
  * Shortcode function for [artwork] shortcode.
  *
  * Shortcode attributes:
- * 'id' is the record id of the fitzcol artefact record - found on the end of the record URL.
+ * 'id' is the record id of the fitzcol artwork record - found on the end of the record URL.
  * 'caption-option' can be 'none' to turn off the caption; defaults to 'auto' which displays 'caption-text'
  *  or an automatic caption if no 'caption-text' is provided.
  * 'caption-text' is the desired manual caption text.
@@ -92,7 +92,7 @@ function fitzcol_display_artwork( $attr ) {
         'caption-text' => '',
         'figure-size' => 'medium'
     ),
-        $attr, 'artefact'
+        $attr, 'artwork'
     );
     // Load controller class
     require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitzcol-artwork-controller.php';

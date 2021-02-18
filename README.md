@@ -76,14 +76,14 @@ do this.
     Navigate to the wp-content/plugins directory of your WordPress installation and clone this repository:
 
 
-    Go to the 'Plugins' page of your WordPress installation and find 'Finds.org.uk Artefacts and Coins' in the list.
+    Go to the 'Plugins' page of your WordPress installation and find 'Finds.org.uk artworks and Coins' in the list.
     To activate the plugin click 'Activate' (or 'Network Activate' if you have a multisite installation and want it to be
 available to all the sites in your installation).
 
 # How it works
 
-Fitzwilliam Museum provides JSON versions of its artefact records and search results, which are computer readable.
-The user inserts a shortcode into a post with an artefact record id and the plugin fetches the data for that
+Fitzwilliam Museum provides JSON versions of its artwork records and search results, which are computer readable.
+The user inserts a shortcode into a post with an artwork record id and the plugin fetches the data for that
 record from the finds.org.uk JSON feeds.
 
 
@@ -955,7 +955,7 @@ GPL v3
 
 # Known issues
 
-* When two or more images are available on an artefact record it is not possible to choose which image is displayed
+* When two or more images are available on an artwork record it is not possible to choose which image is displayed
 by the shortcode, because only one is made available in the JSON by finds.org.uk, and typically it is not the main image.
 * When images are deleted or replaced on finds.org.uk the JSON is not always updated, therefore sometimes
 an image will display as broken by the shortcode even though an image appears correctly on the original record itself.

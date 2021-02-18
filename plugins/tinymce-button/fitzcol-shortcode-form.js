@@ -139,7 +139,7 @@ jQuery(function ($) {
         };
 
         // Start shortcode text
-        var fitzcolShortcode = '[artefact';
+        var fitzcolShortcode = '[artwork';
         // Get the attributes and values
         for (attributes in values) {
             // If not empty or null
@@ -282,7 +282,7 @@ jQuery(function ($) {
 
 
     /**
-     * Lookup an artefact record id from a unique id (aka 'old finds id') and try to submit the form.
+     * Lookup an artwork record id from a unique id (aka 'old finds id') and try to submit the form.
      *
      * Makes an ajax call to the Fitzwilliam Museum CIIM endpoint server and checks the response to make sure it is a valid unique id
      * and that the record is on public display. If not, displays an error message.

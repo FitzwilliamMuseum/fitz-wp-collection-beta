@@ -2,7 +2,6 @@
 /**
 * Template used to display an error message.
 *
-* @package finds-org-uk-artefacts-and-coins
 */
 ?>
 

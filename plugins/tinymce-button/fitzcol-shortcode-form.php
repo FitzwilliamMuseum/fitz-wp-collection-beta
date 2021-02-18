@@ -1,6 +1,6 @@
 <?php
 /*
- fitzcol Artefacts and Coins Shortcode Form
+ fitzcol artworks and Coins Shortcode Form
  Version 1.0
  Author Mary Chester-Kadwell
  Author URI https://github.com/mchesterkadwell
@@ -24,7 +24,7 @@
 
 $shortcode_form = "<h1>Add artwork shortcode</h1>";
 $shortcode_form.= "<form id='fitzcol-shortcode' name='fitzcol-shortcode' method='POST' action=''>";
-// ARTEFACT //
+// artwork //
 $shortcode_form.= "<fieldset><legend>Artwork</legend>";
 // entry-type
 $shortcode_form.= "<label for='entry-type'>" . 'Choose how to enter the artwork:' . "</label>";
@@ -34,7 +34,7 @@ $shortcode_form.= "<option value='record-id'>" . 'Record ID' . "</option>";
 $shortcode_form.= "</select>";
 // id (from url)
 $shortcode_form.= "<label for='url' class='url'>" . 'Enter the full web address of the artwork record:' . "</label>";
-$shortcode_form.= "<input type='text' id='url' name='url' class='artefact-input url' size='55' required />";
+$shortcode_form.= "<input type='text' id='url' name='url' class='artwork-input url' size='55' required />";
 $shortcode_form.= "<p id='url-explanation' class='explanation url'>" . "Example: <strong>https://collection.beta.fitz.ms/id/object/656</strong>" ."</p>";
 $shortcode_form.= "<label for='record-id' class='record-id'>" . 'Enter the record ID found at the end of the web address:' . "</label>";
 $shortcode_form.= "<input type='text' id='record-id' name='id' class='artwork-input record-id' size='15' required />";
