@@ -96,8 +96,8 @@ function fitzcol_display_artwork( $attr ) {
     // Load controller class
     require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitzcol-artwork-controller.php';
     $artwork_controller = new Fitzcol_Artwork_Controller( $attributes );
-    return 'Boom';
-    // return $artwork_controller->display_artwork();
+    // return 'Boom';
+    return $artwork_controller->display_artwork();
 
 }
 

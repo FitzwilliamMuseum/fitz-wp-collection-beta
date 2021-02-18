@@ -213,7 +213,7 @@ class Fitzcol_Artwork_Controller
      */
     private function load_error_template_dependency() {
         ob_start();
-        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fouaac-error.php' );
+        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fitzcol-error.php' );
         return ob_get_clean();
 
     }
