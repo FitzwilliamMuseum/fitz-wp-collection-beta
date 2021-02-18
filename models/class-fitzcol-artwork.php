@@ -30,8 +30,8 @@ class Fitzcol_Artwork
 
     public function __construct( array $data )
     {
-        $this->id = $data[ 'identifier' ]['priref'];
-        $this->accession_number = $data[ 'identifier' ]['accession_number'];
+        $this->id = $data[ 'identifier' ][1]['priref'];
+        $this->accession_number = $data[ 'identifier' ][0]['accession_number'];
         $this->object_type = $data[ 'objecttype' ];
         $this->broad_period = $data[ 'broadperiod' ];
         $this->filename = $data[ 'filename' ];
