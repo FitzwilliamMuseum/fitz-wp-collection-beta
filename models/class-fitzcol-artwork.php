@@ -17,7 +17,7 @@ class Fitzcol_Artwork
     private $medium_image;
     private $original_image;
     private $preview_image;
-    private $image_copyright_holder;
+    private $image_copyright_holder = 'The Fitzwilliam Museum';
     private $image_license;
     private $image_license_acronym;
     private $title;

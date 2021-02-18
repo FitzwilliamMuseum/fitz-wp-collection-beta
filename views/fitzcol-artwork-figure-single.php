@@ -17,9 +17,9 @@
 
   <figcaption class="fitzcol-caption-text wp-caption-text">
     <?php if ( 'auto' == $this->get_caption_option() ): ?>
-      <a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>
-      <?php esc_html_e($this->get_artwork_record()->get_description());?>
-      Accession number: <?php esc_html_e($this->get_artwork_record()->get_accession_number());?>
+      <h3><a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a></h3>
+      <p><?php esc_html_e($this->get_artwork_record()->get_description());?></p>
+      <p>Accession number: <?php esc_html_e($this->get_artwork_record()->get_accession_number());?></p>
     <?php endif; ?>
   </figcaption>
 
