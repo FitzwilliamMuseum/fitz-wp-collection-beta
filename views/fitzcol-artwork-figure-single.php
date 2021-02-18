@@ -19,8 +19,6 @@
     <?php if ( 'auto' == $this->get_caption_option() ): ?>
       <h3><a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a></h3>
       <p>
-        <?php esc_html_e($this->get_artwork_record()->get_description());?>
-        <br/>
         Accession number: <?php esc_html_e($this->get_artwork_record()->get_accession_number());?>
       </p>
     <?php endif; ?>

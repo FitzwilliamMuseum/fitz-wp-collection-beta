@@ -138,6 +138,7 @@ class Fitzcol_Artwork
      */
     public function get_image_license_acronym()
     {
+        
         return $this->image_license_acronym;
     }
 
