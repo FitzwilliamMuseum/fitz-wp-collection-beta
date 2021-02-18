@@ -36,9 +36,9 @@ class Fitzcol_Artwork
         $this->accession_number = $data[ 'identifier' ][0]['accession_number'];
         $this->object_type = $data[ 'summary_title' ];
         $this->medium_image = $data['multimedia'][0]['processed']['mid']['location'];
-        $this->large_image = $data[ 'multimedia' ][0]['processed']['large'][0]['location'];
-        $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview'][0]['location'];
-        $this->original_image = $data[ 'multimedia' ][0]['processed']['original'][0]['location'];
+        $this->large_image = $data[ 'multimedia' ][0]['processed']['large']['location'];
+        $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview']['location'];
+        $this->original_image = $data[ 'multimedia' ][0]['processed']['original']['location'];
         $this->image_copyright_holder = $data[ 'legal' ]['credit_line'];
         $this->image_license = 'BY-NC-ND';
         $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
