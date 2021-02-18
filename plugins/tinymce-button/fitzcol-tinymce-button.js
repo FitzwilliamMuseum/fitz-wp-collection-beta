@@ -21,7 +21,7 @@
  */
 
 (function() {
-    tinymce.create('tinymce.plugins.fitzCollection', {
+    tinymce.create('tinymce.plugins.fitzcol', {
         /**
          * Initialise the plugin.
          *
@@ -30,7 +30,7 @@
          */
         init : function(ed, url) {
 
-            ed.addButton('fitzCollection', {
+            ed.addButton('fitzcol', {
                 title : 'Fitzwilliam Collection Artworks Shortcode',
                 image : 'https://fitz-cms-images.s3.eu-west-2.amazonaws.com/fvlogo.jpg',
                 onclick: function () {
@@ -67,7 +67,7 @@
          */
         getInfo : function() {
             return {
-                longname : 'fitzCollection Artefacts and Coins Shortcode Button',
+                longname : 'fitzcol Artefacts and Coins Shortcode Button',
                 author : 'Mary Chester-Kadwell',
                 authorurl : 'https://github.com/mchesterkadwell',
                 infourl : 'https://github.com/findsorguk/wp-findsorguk',

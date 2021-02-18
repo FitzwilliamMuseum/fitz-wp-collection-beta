@@ -32,11 +32,11 @@ class Fitzcol_Artwork_Controller
      * Shortcode attributes.
      */
     /**
-     * Shortcode attribute: URL of a fitzCollection record.
+     * Shortcode attribute: URL of a fitzcol record.
      *
      * @since 1.0.0
      * @access private
-     * @var string $record_id URL of a fitzCollection record.
+     * @var string $record_id URL of a fitzcol record.
      */
     private $record_id;
     /**
@@ -92,7 +92,7 @@ class Fitzcol_Artwork_Controller
     private $error_message;
 
     /**
-     * Constructor for Fitz_COllection_Artwork_Controller class.
+     * Constructor for Fitzcol_Artwork_Controller class.
      *
      * @since 1.0.0
      * @access private

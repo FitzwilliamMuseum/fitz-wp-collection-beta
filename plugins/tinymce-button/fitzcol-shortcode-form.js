@@ -24,39 +24,39 @@ jQuery(function ($) {
 
             // If no input is provided, display error
             if (!entryValue.trim()) {
-                fitzCollectionDisplayErrorMessage("No artwork identification ID entered. Please enter an artwork and try again.");
+                fitzcolDisplayErrorMessage("No artwork identification ID entered. Please enter an artwork and try again.");
             } else { // Otherwise, validate input and try to submit form
 
                 // If the entry-type is 'unique-id'
                 if (entryType === "unique-id") {
                     // @TODO Validate the input (with regex!)
                     // Look up the record id (send ajax request) and try to submit the form
-                    fitzCollectionLookupRecordIdAndSubmit();
+                    fitzcolLookupRecordIdAndSubmit();
                 }
             }
 
             // If the entry-type is 'url'
             if (entryType === "url") {
                 // Extract the record id from the url
-                var validRecordId = fitzCollectionExtractRecordId();
+                var validRecordId = fitzcolExtractRecordId();
                 // If record id is valid, update the input and submit the form
                 if (validRecordId) {
                     $("#record-id").val(validRecordId);
-                    fitzCollectionSubmitForm();
+                    fitzcolSubmitForm();
                 } else {
-                    fitzCollection("Please check your URL for errors and try again.");
+                    fitzcol("Please check your URL for errors and try again.");
                 }
             }
 
             // If the entry-type is 'record-id'
             if (entryType === "record-id") {
-                var validRecordId = fitzCollectionValidateRecordId();
+                var validRecordId = fitzcolValidateRecordId();
                 // If record id is valid, update the input and submit the form
                 if (validRecordId) {
                     $("#record-id").val(validRecordId);
-                    fitzCollectionSubmitForm();
+                    fitzcolSubmitForm();
                 } else {
-                    fitzCollectionDisplayErrorMessage("Please check your artwork ID for errors and try again.");
+                    fitzcolDisplayErrorMessage("Please check your artwork ID for errors and try again.");
                 }
             }
 
@@ -68,7 +68,7 @@ jQuery(function ($) {
     // If a change is detected in the entry-type selection drop down
     $("#entry-type").change(function () {
         // Reset any error message
-        fitzCollectionResetErrorMessage();
+        fitzcolResetErrorMessage();
         // Get the value of the currently selected option
         var entryType = $('#entry-type option:selected').val();
         // Depending on what entry-type the user chooses, display the label, text input and explanation accordingly
@@ -119,7 +119,7 @@ jQuery(function ($) {
      *
      * @return {undefined}
      */
-    function fitzCollectionSubmitForm() {
+    function fitzcolSubmitForm() {
         // Get the form fields
         var values = {};
         $('#TB_ajaxContent form :input').each(function (index, field) {
@@ -139,7 +139,7 @@ jQuery(function ($) {
         };
 
         // Start shortcode text
-        var fitzCollectionShortcode = '[artefact';
+        var fitzcolShortcode = '[artefact';
         // Get the attributes and values
         for (attributes in values) {
             // If not empty or null
@@ -149,18 +149,18 @@ jQuery(function ($) {
                     // If the value has more than 1 word
                     if (countWords(String(values[attributes])) > 1) {
                         // Add the key="value" pair with quotes around the value
-                        fitzCollectionShortcode += ' ' + attributes + '="' + values[attributes] + '"';
+                        fitzcolShortcode += ' ' + attributes + '="' + values[attributes] + '"';
                     } else {
                         // Otherwise just add the key=value pair
-                        fitzCollectionShortcode += ' ' + attributes + '=' + values[attributes];
+                        fitzcolShortcode += ' ' + attributes + '=' + values[attributes];
                     }
                 }
             }
         }
         // End shortcode text
-        fitzCollectionShortcode += ']';
+        fitzcolShortcode += ']';
         // Insert shortcode into the active editor
-        tinyMCE.activeEditor.execCommand('mceInsertContent', false, fitzCollectionShortcode);
+        tinyMCE.activeEditor.execCommand('mceInsertContent', false, fitzcolShortcode);
         // Close Thickbox
         tb_remove();
 
@@ -183,10 +183,10 @@ jQuery(function ($) {
      * @param {string} message Error message.
      * @return {undefined}
      */
-    function fitzCollectionDisplayErrorMessage(message) {
+    function fitzcolDisplayErrorMessage(message) {
         var entryType = $('#entry-type').val();
-        $("#" + entryType + "-explanation").html(message).addClass("fitzCollection-validation-error");
-        $("#" + entryType).addClass("fitzCollection-validation-error");
+        $("#" + entryType + "-explanation").html(message).addClass("fitzcol-validation-error");
+        $("#" + entryType).addClass("fitzcol-validation-error");
     }
 
     /**
@@ -194,14 +194,14 @@ jQuery(function ($) {
      *
      * @return {undefined}
      */
-    function fitzCollectionResetErrorMessage() {
+    function fitzcolResetErrorMessage() {
         // If there is an error message
-        if ($(".artefact-input").hasClass("fitzCollection-validation-error")) {
+        if ($(".artefact-input").hasClass("fitzcol-validation-error")) {
             var entryType = $('#entry-type option:selected').val();
             // Remove the error class from the input
-            $("#" + entryType).removeClass("fitzCollection-validation-error");
+            $("#" + entryType).removeClass("fitzcol-validation-error");
             // Remove error class from explanation and reset explanation text
-            $("#" + entryType + "-explanation").removeClass("fitzCollection-validation-error").html(function () {
+            $("#" + entryType + "-explanation").removeClass("fitzcol-validation-error").html(function () {
                 var entryType = $('#entry-type').val();
                 switch (entryType) {
                     case 'url':
@@ -223,9 +223,9 @@ jQuery(function ($) {
      *
      * @return {string} A record id, the empty string if not valid.
      */
-    function fitzCollectionValidateRecordId() {
+    function fitzcolValidateRecordId() {
         var recordId = $("#record-id").val().trim();
-        if (fitzCollectionIsInt1To999999(recordId)) {
+        if (fitzcolIsInt1To999999(recordId)) {
             return recordId;
         } else {
             return '';
@@ -238,7 +238,7 @@ jQuery(function ($) {
      * @param {string} val Value to check.
      * @return {boolean} True if 1-999999, otherwise false.
      */
-    function fitzCollectionIsInt1To999999(val) {
+    function fitzcolIsInt1To999999(val) {
         var num = parseInt(val, 10);
         return !isNaN(num) && val == num && val.toString() == num.toString() && num > 1 && num < 1000000;
     }
@@ -250,7 +250,7 @@ jQuery(function ($) {
      *
      * @return {string} Record id.
      */
-    function fitzCollectionExtractRecordId() {
+    function fitzcolExtractRecordId() {
         var prefixWithHttps = "https://collection.beta.fitz.ms/id/object/";
         var prefixWithHttp = "http://collection.beta.fitz.ms/id/object/";
         var prefixNoScheme = "collection.beta.fitz.ms/id/object/";
@@ -270,7 +270,7 @@ jQuery(function ($) {
         if (prefix) {
             recordId = url.substring(prefix.length).replace(/\//g, '');
             // If the record id is a number between 1 and 999999, return it
-            if (fitzCollectionIsInt1To999999(recordId)) {
+            if (fitzcolIsInt1To999999(recordId)) {
                 return recordId;
             } else {
                 return '';
@@ -289,7 +289,7 @@ jQuery(function ($) {
      *
      * @return {undefined}
      */
-    function fitzCollectionLookupRecordIdAndSubmit() {
+    function fitzcolLookupRecordIdAndSubmit() {
         $.ajax({
             url: 'https://collection.beta.fitz.ms/search/results?query=accession_number%3A'
             + $("#accession_number").val()
@@ -301,17 +301,17 @@ jQuery(function ($) {
                 console.log(data);
                 if (data.meta.totalResults == 0) {
                     // No record returned so error
-                    fitzCollectionDisplayErrorMessage("No artwork with that accession ID is available. Please check and try again.");
+                    fitzcolDisplayErrorMessage("No artwork with that accession ID is available. Please check and try again.");
                 } else if (data.results[0].id) {
                     // Record id available so update the input value with the record id, and submit the form
                     $('#record-id').val(data.results[0].id);
-                    fitzCollectionSubmitForm();
+                    fitzcolSubmitForm();
                 } else {
-                    fitzCollectionDisplayErrorMessage("Something has gone wrong. Please check your accession ID for errors and try again.");
+                    fitzcolDisplayErrorMessage("Something has gone wrong. Please check your accession ID for errors and try again.");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                fitzCollectionDisplayErrorMessage("Something has gone wrong when trying to contact finds.org.uk: " +
+                fitzcolDisplayErrorMessage("Something has gone wrong when trying to contact finds.org.uk: " +
                     textStatus + " (" + errorThrown + ")");
             }
         });

@@ -44,7 +44,7 @@ add_action( 'admin_enqueue_scripts', 'fitzcol_form_styles' );
 /**
  * Load CSS styles for artefact display
  */
-function fitzCollection_load_styles() {
+function fitzcol_load_styles() {
     wp_register_style( 'fitzcol-display-style', plugins_url('/css/fitzcol-style.css', __FILE__) );
     wp_enqueue_style( 'fitzcol-display-style');
 }
@@ -54,7 +54,7 @@ function fitzCollection_load_styles() {
  *
  * @TODO This should only load on the specific page it is needed.
  */
-function fitzCollection_load_form_styles() {
+function fitzcol_load_form_styles() {
     wp_register_style( 'fitzcol-form-style', plugins_url('/plugins/tinymce-button/fitzcol-shortcode-form.css', __FILE__) );
     wp_enqueue_style( 'fitzcol-form-style');
 }
@@ -72,7 +72,7 @@ add_shortcode( 'artwork', 'fitzcol_artwork' );
  * Shortcode function for [artwork] shortcode.
  *
  * Shortcode attributes:
- * 'id' is the record id of the fitzCollection artefact record - found on the end of the record URL.
+ * 'id' is the record id of the fitzcol artefact record - found on the end of the record URL.
  * 'caption-option' can be 'none' to turn off the caption; defaults to 'auto' which displays 'caption-text'
  *  or an automatic caption if no 'caption-text' is provided.
  * 'caption-text' is the desired manual caption text.

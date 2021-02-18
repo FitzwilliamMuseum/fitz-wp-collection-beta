@@ -1,15 +1,15 @@
-figure.fitzCollection-figure {
+figure.fitzcol-figure {
     width: 66%;
     max-width: 700px;
     margin: 1.5em;
 }
 
-figure.fitzCollection-figure img[class*="fitzcol-"] {
+figure.fitzcol-figure img[class*="fitzcol-"] {
     display: block;
     margin:0 auto;
 }
 
-small.fitzCollection-copyright {
+small.fitzcol-copyright {
     font-size: 80%;
     color: darkgray;
     text-align: center;

@@ -1,6 +1,6 @@
 <?php
 /*
- fitzCollection Artefacts and Coins Shortcode Form
+ fitzcol Artefacts and Coins Shortcode Form
  Version 1.0
  Author Mary Chester-Kadwell
  Author URI https://github.com/mchesterkadwell

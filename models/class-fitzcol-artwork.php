@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Represents a single fitzCollection artefact record.
+ * Represents a single fitzcol artefact record.
  *
  * Description.
  *
