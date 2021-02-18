@@ -43,7 +43,7 @@ class Fitzcol_Artwork
         $this->image_license = 'BY-NC-ND';
         $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
         $this->title = $data['title'][0]['value'];
-        $this->description = $data['description'][0]['value'];
+        $this->description = $data['description']['value'];
     }
     /**
      * @return string
