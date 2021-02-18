@@ -44,7 +44,7 @@ add_action( 'admin_enqueue_scripts', 'fitz_collection_form_styles' );
 /**
  * Load CSS styles for artefact display
  */
-function fouaac_load_styles() {
+function fitzCollection_load_styles() {
     wp_register_style( 'fitz-collection-display-style', plugins_url('/css/fitz-collection-style.css', __FILE__) );
     wp_enqueue_style( 'fitz-collection-display-style');
 }
@@ -54,7 +54,7 @@ function fouaac_load_styles() {
  *
  * @TODO This should only load on the specific page it is needed.
  */
-function fouaac_load_form_styles() {
+function fitzCollection_load_form_styles() {
     wp_register_style( 'fitz-collection-form-style', plugins_url('/plugins/tinymce-button/fitz-collection-shortcode-form.css', __FILE__) );
     wp_enqueue_style( 'fitz-collection-form-style');
 }
@@ -129,7 +129,7 @@ function fitz_collection_shortcode_button() {
  * @param array $plugins An array of all plugins.
  * @return array
  */
-function fouaac_shortcode_plugin( $plugin_array ) {
+function fitzCollection_shortcode_plugin( $plugin_array ) {
     $plugin_array['fitz-collection'] = plugin_dir_url(__FILE__) .'plugins/tinymce-button/fitz-collection-tinymce-button.js';
     return $plugin_array;
 }
@@ -140,7 +140,7 @@ function fouaac_shortcode_plugin( $plugin_array ) {
  * @param array $buttons An array of buttons.
  * @return array
  */
-function fouaac_register_button( $buttons ) {
+function fitzCollection_register_button( $buttons ) {
     array_push( $buttons, 'fitz-collection' ); // Button name 'fitz-collection'
     return $buttons;
 }
