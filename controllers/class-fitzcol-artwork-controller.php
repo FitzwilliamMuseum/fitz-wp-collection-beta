@@ -234,10 +234,9 @@ class Fitzcol_Artwork_Controller
             print_r($artwork_data);
             //and there is a 200 OK response from the finds.org.uk server
             if ( $artwork_data['type']['base'] === 'object' ) {
-                echo 'Test';
-                // //create a new artwork record from the data
-                // $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
-                // //if there is an image available
+                //create a new artwork record from the data
+                $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
+                //if there is an image available
                 // if ( !is_null( $this->get_artwork_record()->get_image_directory() ) ) {
                 //     //create a caption
                 //     $caption = new Fitzcol_Caption_Creator('artwork',
@@ -252,7 +251,7 @@ class Fitzcol_Artwork_Controller
                 //     $this->set_error_message( "No image is available on this record." );
                 //     return $this->display_error();
                 // }
-            } elseif ( $artwork_data['record'] === 'error' ) { //if there is no valid json response
+            } else { //if there is no valid json response
                 $this->set_error_message( $artwork_data['error message'] );
                 return $this->display_error();
             }
