@@ -21,6 +21,8 @@
         </a>
         <?php if ( 'none' == $this->get_caption_option() ): ?>
             (<a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>)
+            <?php esc_html_e($this->get_artwork_record()->get_description());?>
+
         <?php endif; ?>
     </span>
     <figcaption class="fitzcol-caption-text wp-caption-text">
