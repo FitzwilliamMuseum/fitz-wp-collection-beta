@@ -1,7 +1,6 @@
 <?php
 
 /**
- * Importer for find.org.uk artefact record JSON data.
  *
  * Description.
  *

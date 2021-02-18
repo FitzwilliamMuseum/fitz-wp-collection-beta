@@ -2,7 +2,6 @@
 /**
 * Template used to display a single artwork figure.
 *
-* @package finds-org-uk-artworks-and-coins
 */
 ?>
 

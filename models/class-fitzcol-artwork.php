@@ -1,7 +1,6 @@
 <?php
 
 /**
- * Represents a single finds.org.uk artefact record.
  *
  * Description.
  *

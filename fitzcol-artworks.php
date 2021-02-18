@@ -1,17 +1,21 @@
 <?php
 /*
 Plugin Name: Fitzwilliam Museum Collection Data for Wordpress
-Description: Display up-to-date artefacts and coins data from the Portable Antiquities Scheme (finds.org.uk) on your Wordpress blog.
+Description: Display up-to-date artwork info from the Fitzwilliam Museum.
 Version:     1.0.0
 Author:      Mary Chester-Kadwell
-Author URI:  https://finds.org.uk/
+Author URI:  https://github.com/marychesterkadwell
+Author:      Daniel Pett
+Author URI:  https://github.com/marychesterkadwell
 License:     GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: finds-org-uk
 */
 
-/*  Copyright 2017  Mary Chester-Kadwell  (email : mchester-kadwell@britishmuseum.org)
-
+/*
+    Copyright 2017  Mary Chester-Kadwell
+    Copyright 2021  Daniel Pett
+  
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 3 as published by
     the Free Software Foundation.
