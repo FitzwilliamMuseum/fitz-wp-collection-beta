@@ -231,30 +231,31 @@ class Fitzcol_Artwork_Controller
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
 
-            var_dump($artwork_data);
-            // //and there is a 200 OK response from the finds.org.uk server
-            // if ( $artwork_data['type']['base'] === 'object' ) {
-            //     //create a new artwork record from the data
-            //     $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
-            //     //if there is an image available
-            //     if ( !is_null( $this->get_artwork_record()->get_image_directory() ) ) {
-            //         //create a caption
-            //         $caption = new Fitzcol_Caption_Creator('artwork',
-            //             $this->get_artwork_record(),
-            //             $this->get_caption_option(),
-            //             $this->get_caption_text()
-            //         );
-            //         $this->set_caption_text_display($caption->create_caption());
-            //         //display the artwork figure
-            //         return $this->load_artwork_template_dependency();
-            //     } else { //if there is no image available
-            //         $this->set_error_message( "No image is available on this record." );
-            //         return $this->display_error();
-            //     }
-            // } elseif ( $artwork_data['record'] === 'error' ) { //if there is no valid json response
-            //     $this->set_error_message( $artwork_data['error message'] );
-            //     return $this->display_error();
-            // }
+            print_r($artwork_data);
+            //and there is a 200 OK response from the finds.org.uk server
+            if ( $artwork_data['type']['base'] === 'object' ) {
+                echo 'Test';
+                // //create a new artwork record from the data
+                // $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
+                // //if there is an image available
+                // if ( !is_null( $this->get_artwork_record()->get_image_directory() ) ) {
+                //     //create a caption
+                //     $caption = new Fitzcol_Caption_Creator('artwork',
+                //         $this->get_artwork_record(),
+                //         $this->get_caption_option(),
+                //         $this->get_caption_text()
+                //     );
+                //     $this->set_caption_text_display($caption->create_caption());
+                //     //display the artwork figure
+                //     return $this->load_artwork_template_dependency();
+                // } else { //if there is no image available
+                //     $this->set_error_message( "No image is available on this record." );
+                //     return $this->display_error();
+                // }
+            } elseif ( $artwork_data['record'] === 'error' ) { //if there is no valid json response
+                $this->set_error_message( $artwork_data['error message'] );
+                return $this->display_error();
+            }
 
         } else { //if the record id is invalid
             return $this->display_error();
