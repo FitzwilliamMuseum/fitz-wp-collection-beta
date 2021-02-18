@@ -231,7 +231,7 @@ class Fitzcol_Artwork_Controller
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
 
-            print_var($artwork_data);
+            var_dump($artwork_data);
             // //and there is a 200 OK response from the finds.org.uk server
             // if ( $artwork_data['type']['base'] === 'object' ) {
             //     //create a new artwork record from the data
