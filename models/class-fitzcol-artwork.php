@@ -11,7 +11,7 @@
 class Fitzcol_Artwork
 {
     private $id;
-    private $old_find_id;
+    private $accession_number;
     private $object_type;
     private $broad_period;
     private $filename;
@@ -30,8 +30,8 @@ class Fitzcol_Artwork
 
     public function __construct( array $data )
     {
-        $this->id = $data[ 'id' ];
-        $this->old_find_id = $data[ 'old_findID' ];
+        $this->id = $data[ 'identifier' ]['priref'];
+        $this->accession_number = $data[ 'identifier' ]['accession_number'];
         $this->object_type = $data[ 'objecttype' ];
         $this->broad_period = $data[ 'broadperiod' ];
         $this->filename = $data[ 'filename' ];
@@ -54,9 +54,9 @@ class Fitzcol_Artwork
     /**
      * @return string
      */
-    public function get_old_find_id()
+    public function get_accession_number()
     {
-        return $this->old_find_id;
+        return $this->accession_number;
     }
 
     /**
