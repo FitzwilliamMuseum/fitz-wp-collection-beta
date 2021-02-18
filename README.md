@@ -955,7 +955,4 @@ GPL v3
 
 # Known issues
 
-* When two or more images are available on an artwork record it is not possible to choose which image is displayed
-by the shortcode, because only one is made available in the JSON by finds.org.uk, and typically it is not the main image.
-* When images are deleted or replaced on finds.org.uk the JSON is not always updated, therefore sometimes
-an image will display as broken by the shortcode even though an image appears correctly on the original record itself.
+* Level of documentation at the Museum - some fields have no text!
