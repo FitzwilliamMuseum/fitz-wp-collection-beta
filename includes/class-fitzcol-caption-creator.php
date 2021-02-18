@@ -16,7 +16,6 @@ class Fitzcol_Caption_Creator
     private $caption_option;
     private $caption_text;
 
-
     /**
      * fitzcol_Caption_Creator constructor.
      */
