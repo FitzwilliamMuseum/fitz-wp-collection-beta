@@ -231,7 +231,7 @@ class Fitzcol_Artwork_Controller
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
             echo '<pre>';
-            var_export($artwork_data);
+            var_export($artwork_data['multimedia']);
             echo "</pre>";
             print($artwork_data['type']['base']);
 
