@@ -39,7 +39,7 @@ class Fitzcol_Json_Importer
     }
 
     private function create_json_url() {
-        return sprintf('%s://%s/object/id/%s/json',
+        return sprintf('%s://%s/id/object/%s/json',
             Fitzcol_Artwork_Controller::FITZCOL_REQUIRED_SCHEME,
             Fitzcol_Artwork_Controller::FITZCOL_REQUIRED_HOST,
             $this->get_record_id()
