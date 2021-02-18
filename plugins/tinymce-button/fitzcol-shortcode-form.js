@@ -87,7 +87,7 @@ jQuery(function ($) {
                 break;
             case 'record-id':
                 $('.url').hide();
-                $('.unique-id').hide();
+                $('.accession_number').hide();
                 $('.record-id').show();
                 $('label.record-id').css('display', 'block');
                 break;

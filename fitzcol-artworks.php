@@ -87,9 +87,9 @@ add_shortcode( 'artwork', 'fitzcol_artwork' );
 function fitzcol_display_artwork( $attr ) {
     // Insert default attribute values
     $attributes = shortcode_atts( array(
-        'id' => '',
+        'id' => '1',
         'caption-option' => 'auto',
-        'caption-text' => '',
+        'caption-text' => 'An image of a Fitzwilliam Museum object',
         'figure-size' => 'medium'
     ),
         $attr, 'artwork'

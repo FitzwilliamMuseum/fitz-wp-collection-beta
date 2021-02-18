@@ -231,7 +231,7 @@ class Fitzcol_Artwork_Controller
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
             //and there is a 200 OK response from the fitz server
-            if ( $artwork_data['record'] === 'artwork' ) {
+            if ( $artwork_data['type']['base'] === 'object' ) {
                 //create a new artwork record from the data
                 $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
                 //if there is an image available
@@ -249,7 +249,7 @@ class Fitzcol_Artwork_Controller
                     $this->set_error_message( "No image is available on this record." );
                     return $this->display_error();
                 }
-            } elseif ( $artwork_data['record'] === 'error' ) { //if there is no valid json response
+            } elseif ( !empty($artwork_data) ) { //if there is no valid json response
                 $this->set_error_message( $artwork_data['error message'] );
                 return $this->display_error();
             }
