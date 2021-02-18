@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Controller for displaying artefact records.
+ * Controller for displaying artwork records.
  *
  * Description.
  *
@@ -74,11 +74,11 @@ class Fitzcol_Artwork_Controller
     private $caption_text_display;
 
     /**
-     * Artefact record object containing all the data from the json response.
+     * artwork record object containing all the data from the json response.
      *
      * @since 1.0.0
      * @access private
-     * @var object $artefact_record Artefact record object.
+     * @var object $artwork_record artwork record object.
      */
     private $artwork_record;
 
@@ -92,7 +92,7 @@ class Fitzcol_Artwork_Controller
     private $error_message;
 
     /**
-     * Constructor for Fitzcol_Artefact_Controller class.
+     * Constructor for Fitzcol_artwork_Controller class.
      *
      * @since 1.0.0
      * @access private
@@ -219,38 +219,38 @@ class Fitzcol_Artwork_Controller
     }
 
     /**
-     * Displays an artefact record specified by a finds.org.uk URL.
+     * Displays an artwork record specified by a finds.org.uk URL.
      *
      * @since 1.0.0
      *
      */
-    public function display_artefact() {
+    public function display_artwork() {
         $record_id_valid = $this->validate_record_id( $this->get_record_id() );
         //if the record id is valid
         if ( $record_id_valid ) {
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
-            $artefact_data = $json_importer->import_json();
+            $artwork_data = $json_importer->import_json();
             //and there is a 200 OK response from the finds.org.uk server
-            if ( $artefact_data['record'] === 'artefact' ) {
-                //create a new artefact record from the data
-                $this->set_artefact_record( new Fitzcol_Artefact( $artefact_data ) );
+            if ( $artwork_data['type']['base'] === 'object' ) {
+                //create a new artwork record from the data
+                $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
                 //if there is an image available
-                if ( !is_null( $this->get_artefact_record()->get_image_directory() ) ) {
+                if ( !is_null( $this->get_artwork_record()->get_image_directory() ) ) {
                     //create a caption
-                    $caption = new Fitzcol_Caption_Creator('artefact',
-                        $this->get_artefact_record(),
+                    $caption = new Fitzcol_Caption_Creator('artwork',
+                        $this->get_artwork_record(),
                         $this->get_caption_option(),
                         $this->get_caption_text()
                     );
                     $this->set_caption_text_display($caption->create_caption());
-                    //display the artefact figure
-                    return $this->load_artefact_template_dependency();
+                    //display the artwork figure
+                    return $this->load_artwork_template_dependency();
                 } else { //if there is no image available
                     $this->set_error_message( "No image is available on this record." );
                     return $this->display_error();
                 }
-            } elseif ( $artefact_data['record'] === 'error' ) { //if there is no valid json response
-                $this->set_error_message( $artefact_data['error message'] );
+            } elseif ( $artwork_data['record'] === 'error' ) { //if there is no valid json response
+                $this->set_error_message( $artwork_data['error message'] );
                 return $this->display_error();
             }
 
