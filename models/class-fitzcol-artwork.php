@@ -34,7 +34,7 @@ class Fitzcol_Artwork
         $this->id = $data[ 'identifier' ][1]['priref'];
         $this->accession_number = $data[ 'identifier' ][0]['accession_number'];
         $this->object_type = $data[ 'summary_title' ];
-        $this->medium_image = $data['multimedia'][0]['processed']['mid'];
+        $this->medium_image = $data['multimedia'][0]['processed']['mid']['location'];
         $this->large_image = $data[ 'multimedia' ][0]['processed']['large'][0]['location'];
         $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview'][0]['location'];
         $this->original_image = $data[ 'multimedia' ][0]['processed']['original'][0]['location'];
