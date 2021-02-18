@@ -1,0 +1,32 @@
+form#fitz-collection-shortcode .unique-id,
+form#fitz-collection-shortcode .record-id {
+    display: none;
+}
+
+form#fitz-collection-shortcode p.fouaac-validation-error {
+    color: red;
+}
+
+form#fitz-collection-shortcode input.fouaac-validation-error {
+    border:1px solid red;
+}
+
+form#fitz-collection-shortcode fieldset {
+    margin-bottom: 25px;
+}
+
+form#fitz-collection-shortcode fieldset legend {
+    padding-bottom: 5px;
+    font-size: 18px
+}
+
+form#fitz-collection-shortcode fieldset label {
+    padding-top: 5px;
+    display:block;
+    font-size: 14px
+}
+
+form#fitz-collection-shortcode fieldset p {
+    margin: 0;
+    padding: 0
+}
