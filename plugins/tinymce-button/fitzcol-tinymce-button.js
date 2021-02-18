@@ -67,15 +67,15 @@
          */
         getInfo : function() {
             return {
-                longname : 'fitzcol Artefacts and Coins Shortcode Button',
-                author : 'Mary Chester-Kadwell',
-                authorurl : 'https://github.com/mchesterkadwell',
-                infourl : 'https://github.com/findsorguk/wp-findsorguk',
+                longname : 'Fitwilliam Museum Collection Shortcode Button',
+                author : 'Daniel Pett/Mary Chester-Kadwell',
+                authorurl : 'https://github.com/portableant',
+                infourl : 'https://github.com/fitzwilliammuseum/',
                 version : "0.1"
             };
         }
     });
 
     // Register plugin
-    tinymce.PluginManager.add( 'fouaac', tinymce.plugins.fouaac );
+    tinymce.PluginManager.add( 'fitzcol', tinymce.plugins.fitzcol );
 })();

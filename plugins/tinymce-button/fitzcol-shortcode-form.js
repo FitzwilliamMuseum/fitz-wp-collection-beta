@@ -196,7 +196,7 @@ jQuery(function ($) {
      */
     function fitzcolResetErrorMessage() {
         // If there is an error message
-        if ($(".artefact-input").hasClass("fitzcol-validation-error")) {
+        if ($(".fitzcol-input").hasClass("fitzcol-validation-error")) {
             var entryType = $('#entry-type option:selected').val();
             // Remove the error class from the input
             $("#" + entryType).removeClass("fitzcol-validation-error");
