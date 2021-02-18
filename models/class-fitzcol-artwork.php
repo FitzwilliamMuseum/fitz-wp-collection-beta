@@ -32,7 +32,7 @@ class Fitzcol_Artwork
     {
         $this->id = $data[ 'identifier' ][1]['priref'];
         $this->accession_number = $data[ 'identifier' ][0]['accession_number'];
-        $this->object_type = $data[ 'objecttype' ];
+        $this->object_type = $data[ 'summary_title' ];
         $this->broad_period = $data[ 'broadperiod' ];
         $this->filename = $data[ 'filename' ];
         $this->image_directory = $data[ 'imagedir' ];
