@@ -137,7 +137,7 @@ class Fitzcol_Artwork
      */
     public function get_image_license_acronym()
     {
-        $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
+        $this->image_license_acronym = 'Attribution-NonCommercial-No-Derivatives License';
         return $this->image_license_acronym;
     }
 
@@ -152,7 +152,7 @@ class Fitzcol_Artwork
     /**
      * @return string
      */
-    private function lookup_license_acronym( $image_license )
+    public function lookup_license_acronym( $image_license )
     {
         if ( ! is_null ( $image_license ) ) {
             $acronyms = $this->get_cc_license_acronyms();
