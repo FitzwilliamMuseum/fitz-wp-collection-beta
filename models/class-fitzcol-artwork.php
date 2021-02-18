@@ -111,7 +111,7 @@ class Fitzcol_Artwork
     public function get_image_copyright_holder()
     {
         if($this->image_copyright_holder == '')  {
-          $this->image_copyright_holder = 'The Fitzwilliam Museum';
+          $this->image_copyright_holder = 'The Fitzwilliam Museum, University of Cambridge';
         }
         return $this->image_copyright_holder;
     }

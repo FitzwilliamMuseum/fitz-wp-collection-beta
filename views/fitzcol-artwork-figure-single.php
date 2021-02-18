@@ -24,7 +24,7 @@
   </figcaption>
 
   <span class="fitzcol-copyright">
-    Image rights holder: <?php esc_html_e( $this->get_artwork_record()->get_image_copyright_holder() ); ?>
+    Legal note: <?php esc_html_e( $this->get_artwork_record()->get_image_copyright_holder() ); ?>
     <br />
     License: <a href="https://creativecommons.org/licenses/<?php esc_html_e( strtolower( $this->get_artwork_record()->get_image_license() ) ); ?>/4.0/">
       <?php esc_html_e( $this->get_artwork_record()->get_image_license_acronym() ); ?>
