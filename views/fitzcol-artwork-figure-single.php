@@ -29,6 +29,7 @@
     <?php if ( 'auto' == $this->get_caption_option() ): ?>
       <a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>
       <?php esc_html_e($this->get_artwork_record()->get_description());?>
+      <?php esc_html_e($this->get_artwork_record()->get_accession_number());?>
     <?php endif; ?>
   </figcaption>
 
