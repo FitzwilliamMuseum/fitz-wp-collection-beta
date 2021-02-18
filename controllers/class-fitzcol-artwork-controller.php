@@ -237,7 +237,7 @@ class Fitzcol_Artwork_Controller
                 $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
                 //if there is an image available
                 if ( !is_null( $this->get_artwork_record()->get_medium_image() ) ) {
-                  echo 'pre';
+                  echo '<pre>';
                   print_r($this->get_artwork_record());
                   echo '</pre>';
                     //create a caption
