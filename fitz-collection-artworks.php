@@ -1,9 +1,10 @@
 <?php
 /*
 Plugin Name: Fitzwilliam Museum Object Parser
-Description: Display up-to-date Fitzwilliam Museum Collection data n your Wordpress blog.
+Description: Display up-to-date Fitzwilliam Museum Collection data on your Wordpress blog.
 Version:     1.0.0
-Author:      Daniel Pett
+Author:      Daniel Pett/ Mary Chester-Kadwell
+Since:       2021/02/17
 Author URI:  https://museologi.st
 License:     GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
