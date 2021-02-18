@@ -43,7 +43,7 @@ class Fitzcol_Artwork
         $this->image_license = 'BY-NC-ND';
         $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
         $this->title = $data['title'][0]['value'];
-        $this->description = $data['description']['value'];
+        $this->description = $data['note'][0]['value'];
     }
     /**
      * @return string
@@ -112,7 +112,7 @@ class Fitzcol_Artwork
      */
     public function get_image_copyright_holder()
     {
-        if(is_null($this->image_copyright_holder)){
+        if($this->image_copyright_holder == '')  {
           $this->image_copyright_holder = 'The Fitzwilliam Museum';
         }
         return $this->image_copyright_holder;
