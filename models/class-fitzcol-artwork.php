@@ -137,7 +137,7 @@ class Fitzcol_Artwork
      */
     public function get_image_license_acronym()
     {
-        $this->image_license_acronym = 'Attribution-NonCommercial-No-Derivatives License';
+        $this->image_license_acronym = 'Attribution-NonCommercial-No-Derivatives';
         return $this->image_license_acronym;
     }
 
