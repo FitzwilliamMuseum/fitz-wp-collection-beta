@@ -12,7 +12,7 @@
   src="https://collection.beta.fitz.ms/imagestore/<?php esc_html_e( $this->get_artwork_record()->get_medium_image() );?>"
   alt="<?php esc_html_e( $this->get_caption_text_display() ); ?>
   <?php esc_html_e( $this->get_artwork_record()->get_image_copyright_holder() ); ?>
-  <?php _e( $this->get_artwork_record()->get_image_license_acronym() ); ?> 2.0"
+  <?php _e( $this->get_artwork_record()->get_image_license_acronym() ); ?> 4.0"
   >
 
   <figcaption class="fitzcol-caption-text wp-caption-text">
@@ -26,8 +26,8 @@
   <span class="fitzcol-copyright">
     Image rights holder: <?php esc_html_e( $this->get_artwork_record()->get_image_copyright_holder() ); ?>
     <br />
-    License: <a href="https://creativecommons.org/licenses/<?php esc_html_e( strtolower( $this->get_artwork_record()->get_image_license() ) ); ?>/2.0/">
-      <?php esc_html_e( $this->get_artwork_record()->get_image_license_acronym() ); ?> 2.0
+    License: <a href="https://creativecommons.org/licenses/<?php esc_html_e( strtolower( $this->get_artwork_record()->get_image_license() ) ); ?>/4.0/">
+      <?php esc_html_e( $this->get_artwork_record()->get_image_license_acronym() ); ?>
     </a>
 
   </span>
