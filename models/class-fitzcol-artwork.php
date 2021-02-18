@@ -17,7 +17,7 @@ class Fitzcol_Artwork
     private $medium_image;
     private $original_image;
     private $preview_image;
-    private $image_copyright_holder = 'The Fitzwilliam Museum';
+    private $image_copyright_holder;
     private $image_license;
     private $image_license_acronym;
     private $title;
@@ -112,6 +112,9 @@ class Fitzcol_Artwork
      */
     public function get_image_copyright_holder()
     {
+        if(is_null($this->image_copyright_holder)){
+          $this->image_copyright_holder = 'The Fitzwilliam Museum';
+        }
         return $this->image_copyright_holder;
     }
 
