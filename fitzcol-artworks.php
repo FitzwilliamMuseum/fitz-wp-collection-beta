@@ -45,8 +45,8 @@ add_action( 'admin_enqueue_scripts', 'fitz_collection_form_styles' );
  * Load CSS styles for artefact display
  */
 function fitzCollection_load_styles() {
-    wp_register_style( 'fitz-col-display-style', plugins_url('/css/fitz-col-style.css', __FILE__) );
-    wp_enqueue_style( 'fitz-col-display-style');
+    wp_register_style( 'fitzcol-display-style', plugins_url('/css/fitzcol-style.css', __FILE__) );
+    wp_enqueue_style( 'fitzcol-display-style');
 }
 
 /**
@@ -55,8 +55,8 @@ function fitzCollection_load_styles() {
  * @TODO This should only load on the specific page it is needed.
  */
 function fitzCollection_load_form_styles() {
-    wp_register_style( 'fitz-col-form-style', plugins_url('/plugins/tinymce-button/fitz-col-shortcode-form.css', __FILE__) );
-    wp_enqueue_style( 'fitz-col-form-style');
+    wp_register_style( 'fitzcol-form-style', plugins_url('/plugins/tinymce-button/fitzcol-shortcode-form.css', __FILE__) );
+    wp_enqueue_style( 'fitzcol-form-style');
 }
 
 /**
@@ -130,17 +130,17 @@ function fitzcol_shortcode_button() {
  * @return array
  */
 function fitzcol_shortcode_plugin( $plugin_array ) {
-    $plugin_array['fitz-col'] = plugin_dir_url(__FILE__) .'plugins/tinymce-button/fitz-col-tinymce-button.js';
+    $plugin_array['fitzcol'] = plugin_dir_url(__FILE__) .'plugins/tinymce-button/fitzcol-tinymce-button.js';
     return $plugin_array;
 }
 
 /**
- * Register a button named 'fitz-col' to the editor buttons
+ * Register a button named 'fitzcol' to the editor buttons
  *
  * @param array $buttons An array of buttons.
  * @return array
  */
 function fitzcol_register_button( $buttons ) {
-    array_push( $buttons, 'fitz-col' ); // Button name 'fitz-col'
+    array_push( $buttons, 'fitzcol' ); // Button name 'fitzcol'
     return $buttons;
 }

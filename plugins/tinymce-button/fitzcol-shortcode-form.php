@@ -23,7 +23,7 @@
  */
 
 $shortcode_form = "<h1>Add artwork shortcode</h1>";
-$shortcode_form.= "<form id='fitz-col-shortcode' name='fitzcol-shortcode' method='POST' action=''>";
+$shortcode_form.= "<form id='fitzcol-shortcode' name='fitzcol-shortcode' method='POST' action=''>";
 // ARTEFACT //
 $shortcode_form.= "<fieldset><legend>Artwork</legend>";
 // entry-type
