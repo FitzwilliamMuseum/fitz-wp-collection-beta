@@ -4,7 +4,7 @@ figure.fitzCollection-figure {
     margin: 1.5em;
 }
 
-figure.fitzCollection-figure img[class*="fitzCollection-"] {
+figure.fitzCollection-figure img[class*="fitzcol-"] {
     display: block;
     margin:0 auto;
 }

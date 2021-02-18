@@ -8,7 +8,7 @@
 * @since 1.0.0
 * @TODO documentation
 */
-class Fitz_Collection_Json_Importer
+class Fitzcol_Json_Importer
 {
   private $record_id;
   private $json_url;
@@ -40,8 +40,8 @@ class Fitz_Collection_Json_Importer
 
   private function create_json_url() {
     return sprintf('%s://%s/id/object/%s/json',
-    Fitz_Collection_Artwork_Controller::FITZ_REQUIRED_SCHEME,
-    Fitz_Collection_Artwork_Controller::FITZ_REQUIRED_HOST,
+    Fitzcol_Artwork_Controller::FITZCOL_REQUIRED_SCHEME,
+    Fitzcol_Artwork_Controller::FITZCOL_REQUIRED_HOST,
     $this->get_record_id()
   );
 }

@@ -1,5 +1,5 @@
 // This line is for debugging in Chrome devtools
-//# sourceURL=fitz-collection-shortcode-form.js
+//# sourceURL=fitz-col-shortcode-form.js
 
 //<![CDATA[
 
@@ -17,7 +17,7 @@ jQuery(function ($) {
         /**
          * Insert the shortcode when the submit button is clicked.
          */
-        $('#fitz-collection-shortcode-submit').click(function () {
+        $('#fitz-col-shortcode-submit').click(function () {
             // Get the entry type and value
             var entryType = $('#entry-type').val();
             var entryValue = $("#" + entryType).val();

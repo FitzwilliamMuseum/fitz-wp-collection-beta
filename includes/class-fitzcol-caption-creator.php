@@ -8,7 +8,7 @@
  * @since 1.0.0
  * @TODO documentation
  */
-class Fitz_Collection_Caption_Creator
+class Fitzcol_Caption_Creator
 {
 
     private $display_type;

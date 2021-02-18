@@ -9,7 +9,7 @@
  * @TODO caching
  * @TODO user interface
  */
-class Fitz_Collection_Artwork_Controller
+class Fitzcol_Artwork_Controller
 {
     /**
      * URLs should use the https protocol.
@@ -17,7 +17,7 @@ class Fitz_Collection_Artwork_Controller
      * @since 1.0.0
      * @var string FITZ_REQUIRED_SCHEME Required URL scheme.
      */
-    const FITZ_REQUIRED_SCHEME = 'https';
+    const FITZCOL_REQUIRED_SCHEME = 'https';
 
     /**
      * URLs should use this host
@@ -26,7 +26,7 @@ class Fitz_Collection_Artwork_Controller
      * @TODO replace with development/production config
      * @var string FITZ_REQUIRED_HOST Required host path.
      */
-    const FITZ_REQUIRED_HOST = 'collection.beta.fitz.ms';
+    const FITZCOL_REQUIRED_HOST = 'collection.beta.fitz.ms';
 
     /**
      * Shortcode attributes.
@@ -185,9 +185,9 @@ class Fitz_Collection_Artwork_Controller
      *
      */
     private function load_dependencies() {
-        require_once( plugin_dir_path( dirname( __FILE__ ) ) . 'models/class-fitz-collection-artwork.php' );
-        require_once( plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-fitz-collection-json-importer.php' );
-        require_once( plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-fitz-collection-caption-creator.php' );
+        require_once( plugin_dir_path( dirname( __FILE__ ) ) . 'models/class-fitzcol-artwork.php' );
+        require_once( plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-fitzcol-json-importer.php' );
+        require_once( plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-fitzcol-caption-creator.php' );
     }
 
     /**
@@ -199,7 +199,7 @@ class Fitz_Collection_Artwork_Controller
      */
     private function load_artwork_template_dependency() {
         ob_start();
-        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fitz-collection-artwork-figure-single.php' );
+        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fitzcol-artwork-figure-single.php' );
         return ob_get_clean();
 
     }
@@ -213,7 +213,7 @@ class Fitz_Collection_Artwork_Controller
      */
     private function load_error_template_dependency() {
         ob_start();
-        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fitz-collection-error.php' );
+        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fitzcol-error.php' );
         return ob_get_clean();
 
     }
@@ -228,16 +228,16 @@ class Fitz_Collection_Artwork_Controller
         $record_id_valid = $this->validate_record_id( $this->get_record_id() );
         //if the record id is valid
         if ( $record_id_valid ) {
-            $json_importer = new Fitz_Collection_Json_Importer( $this->get_record_id() );
+            $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
             //and there is a 200 OK response from the fitz server
             if ( $artwork_data['record'] === 'artwork' ) {
                 //create a new artwork record from the data
-                $this->set_artwork_record( new Fitz_Collection_Artwork( $artwork_data ) );
+                $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
                 //if there is an image available
                 if ( !is_null( $this->get_artwork_record()->get_image() ) ) {
                     //create a caption
-                    $caption = new Fitz_Collection_Caption_Creator('artwork',
+                    $caption = new Fitzcol_Caption_Creator('artwork',
                         $this->get_artwork_record(),
                         $this->get_caption_option(),
                         $this->get_caption_text()

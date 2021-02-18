@@ -23,7 +23,7 @@
  */
 
 $shortcode_form = "<h1>Add artwork shortcode</h1>";
-$shortcode_form.= "<form id='fitz-collection-shortcode' name='fouaac-shortcode' method='POST' action=''>";
+$shortcode_form.= "<form id='fitz-col-shortcode' name='fitzcol-shortcode' method='POST' action=''>";
 // ARTEFACT //
 $shortcode_form.= "<fieldset><legend>Artwork</legend>";
 // entry-type
@@ -61,7 +61,7 @@ $shortcode_form.= "<option value='large'>" . 'Large' . "</option>";
 $shortcode_form.= "</select>";
 $shortcode_form.= "<p id='figure-size-explanation'>Medium is recommended.</p>";
 $shortcode_form.= "</fieldset>";
-$shortcode_form.= "<input type='button' id='fouaac-shortcode-submit' name='submit' class='button button-primary button-large' value='"."Insert Shortcode"."' />";
+$shortcode_form.= "<input type='button' id='fitzcol-shortcode-submit' name='submit' class='button button-primary button-large' value='"."Insert Shortcode"."' />";
 $shortcode_form.= "</form>";
 echo $shortcode_form;
 ?>

@@ -43,14 +43,14 @@
                     height = height - 84;
                     //Display a modal ThickBox to display the form for collecting attribute information from the user
                     tb_show( 'Fitzwilliam Collection shortcode', '#TB_inline?width=' + width
-                        + '&height=' + height + '&inlineId=fitz-collection-form' );
+                        + '&height=' + height + '&inlineId=fitz-col-form' );
                     // Load the form
                     jQuery( function() {
                         // Dynamically load the html and js of the modal
                         var ajaxContent = jQuery('#TB_ajaxContent');
-                        ajaxContent.load( url + '/fitz-collection-shortcode-form.php' , function() {
+                        ajaxContent.load( url + '/fitz-col-shortcode-form.php' , function() {
                                 ajaxContent.append("<script type='text/javascript' charset='utf-8' src='"
-                                                    + url + "/fitz-collection-shortcode-form.js'></script>");
+                                                    + url + "/fitz-col-shortcode-form.js'></script>");
                         });
                     });
 

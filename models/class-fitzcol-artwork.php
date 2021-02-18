@@ -8,7 +8,7 @@
  * @since 1.0.0
  * @TODO documentation
  */
-class Fitz_Collection_Artwork
+class Fitzcol_Artwork
 {
     private $id;
     private $accession_number;
@@ -114,10 +114,5 @@ class Fitz_Collection_Artwork
             return null;
         }
     }
-
-
-
-
-
 
 }

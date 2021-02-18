@@ -45,8 +45,8 @@ add_action( 'admin_enqueue_scripts', 'fitz_collection_form_styles' );
  * Load CSS styles for artefact display
  */
 function fitzCollection_load_styles() {
-    wp_register_style( 'fitz-collection-display-style', plugins_url('/css/fitz-collection-style.css', __FILE__) );
-    wp_enqueue_style( 'fitz-collection-display-style');
+    wp_register_style( 'fitz-col-display-style', plugins_url('/css/fitz-col-style.css', __FILE__) );
+    wp_enqueue_style( 'fitz-col-display-style');
 }
 
 /**
@@ -55,8 +55,8 @@ function fitzCollection_load_styles() {
  * @TODO This should only load on the specific page it is needed.
  */
 function fitzCollection_load_form_styles() {
-    wp_register_style( 'fitz-collection-form-style', plugins_url('/plugins/tinymce-button/fitz-collection-shortcode-form.css', __FILE__) );
-    wp_enqueue_style( 'fitz-collection-form-style');
+    wp_register_style( 'fitz-col-form-style', plugins_url('/plugins/tinymce-button/fitz-col-shortcode-form.css', __FILE__) );
+    wp_enqueue_style( 'fitz-col-form-style');
 }
 
 /**
@@ -66,7 +66,7 @@ function fitzCollection_load_form_styles() {
  */
 
 // Register a shortcode [artefact] to display an artefact record in posts
-add_shortcode( 'artwork', 'fitz_collection_artwork' );
+add_shortcode( 'artwork', 'fitzcol_artwork' );
 
 /**
  * Shortcode function for [artwork] shortcode.
@@ -84,7 +84,7 @@ add_shortcode( 'artwork', 'fitz_collection_artwork' );
  * @return string HTML to display
  */
 
-function fitz_collection_display_artwork( $attr ) {
+function fitzcol_display_artwork( $attr ) {
     // Insert default attribute values
     $attributes = shortcode_atts( array(
         'id' => '',
@@ -95,8 +95,8 @@ function fitz_collection_display_artwork( $attr ) {
         $attr, 'artefact'
     );
     // Load controller class
-    require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitz-collection-controller.php';
-    $artwork_controller = new Fitz_Collection_Artwork_Controller( $attributes );
+    require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitzcol-controller.php';
+    $artwork_controller = new Fitzcol_Artwork_Controller( $attributes );
     return $artwork_controller->display_artwork();
 
 }
@@ -108,7 +108,7 @@ function fitz_collection_display_artwork( $attr ) {
  */
 
 // Add action to fire the TinyMCE editor button code after wp has finished loading
-add_action('init', 'fitz_collection_shortcode_button');
+add_action('init', 'fitzcol_shortcode_button');
 
 /**
  * Register button and plugin for TinyMCE button
@@ -116,10 +116,10 @@ add_action('init', 'fitz_collection_shortcode_button');
  * Users can click on this button in the TinyMCE visual editor to choose shortcode attributes and insert
  * the shortcode automatically.
  */
-function fitz_collection_shortcode_button() {
+function fitzcol_shortcode_button() {
     if ( current_user_can('edit_posts') && current_user_can('edit_pages') ) {
-        add_filter( 'mce_external_plugins', 'fitz_collection_shortcode_plugin' );
-        add_filter( 'mce_buttons', 'fitz_collection_register_button' );
+        add_filter( 'mce_external_plugins', 'fitzcol_shortcode_plugin' );
+        add_filter( 'mce_buttons', 'fitzcol_register_button' );
     }
 }
 
@@ -129,18 +129,18 @@ function fitz_collection_shortcode_button() {
  * @param array $plugins An array of all plugins.
  * @return array
  */
-function fitzCollection_shortcode_plugin( $plugin_array ) {
-    $plugin_array['fitz-collection'] = plugin_dir_url(__FILE__) .'plugins/tinymce-button/fitz-collection-tinymce-button.js';
+function fitzcol_shortcode_plugin( $plugin_array ) {
+    $plugin_array['fitz-col'] = plugin_dir_url(__FILE__) .'plugins/tinymce-button/fitz-col-tinymce-button.js';
     return $plugin_array;
 }
 
 /**
- * Register a button named 'fitz-collection' to the editor buttons
+ * Register a button named 'fitz-col' to the editor buttons
  *
  * @param array $buttons An array of buttons.
  * @return array
  */
-function fitzCollection_register_button( $buttons ) {
-    array_push( $buttons, 'fitz-collection' ); // Button name 'fitz-collection'
+function fitzcol_register_button( $buttons ) {
+    array_push( $buttons, 'fitz-col' ); // Button name 'fitz-col'
     return $buttons;
 }
