@@ -1,13 +1,17 @@
 <?php
 /**
-* Template used to display an error message.
-*
-*/
+ * Template used to display an error message.
+ *
+ * @package finds-org-uk-artefacts-and-coins
+ */
 ?>
 
 <p>
-  <strong>Something has gone wrong with your Fitzwilliam Collection shortcode:</strong>
+    <b>Something has gone wrong with your Finds.org.uk Artefacts and Coins shortcode:</b>
 </p>
 <p>
-  <strong><?php echo esc_html( $this->get_error_message() ) ?></strong>
+    <b><?php echo esc_html( $this->get_error_message() ) ?></b>
+
 </p>
+
+

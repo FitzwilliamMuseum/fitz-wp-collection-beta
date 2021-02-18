@@ -1,32 +1,32 @@
-form#fitzcol-shortcode .unique-id,
-form#fitzcol-shortcode .record-id {
+form#fouaac-shortcode .unique-id,
+form#fouaac-shortcode .record-id {
     display: none;
 }
 
-form#fitzcol-shortcode p.fitzcol-validation-error {
+form#fouaac-shortcode p.fouaac-validation-error {
     color: red;
 }
 
-form#fitzcol-shortcode input.fitzcol-validation-error {
+form#fouaac-shortcode input.fouaac-validation-error {
     border:1px solid red;
 }
 
-form#fitzcol-shortcode fieldset {
+form#fouaac-shortcode fieldset {
     margin-bottom: 25px;
 }
 
-form#fitzcol-shortcode fieldset legend {
+form#fouaac-shortcode fieldset legend {
     padding-bottom: 5px;
     font-size: 18px
 }
 
-form#fitzcol-shortcode fieldset label {
+form#fouaac-shortcode fieldset label {
     padding-top: 5px;
     display:block;
     font-size: 14px
 }
 
-form#fitzcol-shortcode fieldset p {
+form#fouaac-shortcode fieldset p {
     margin: 0;
     padding: 0
 }

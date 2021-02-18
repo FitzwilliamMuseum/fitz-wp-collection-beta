@@ -1,5 +1,5 @@
 // This line is for debugging in Chrome devtools
-//# sourceURL=fitzcol-shortcode-form.js
+//# sourceURL=fouaac-shortcode-form.js
 
 //<![CDATA[
 
@@ -17,46 +17,46 @@ jQuery(function ($) {
         /**
          * Insert the shortcode when the submit button is clicked.
          */
-        $('#fitzcol-shortcode-submit').click(function () {
+        $('#fouaac-shortcode-submit').click(function () {
             // Get the entry type and value
             var entryType = $('#entry-type').val();
             var entryValue = $("#" + entryType).val();
 
             // If no input is provided, display error
             if (!entryValue.trim()) {
-                fitzcolDisplayErrorMessage("No artwork identification ID entered. Please enter an artwork and try again.");
+                fouaacDisplayErrorMessage("No artefact entered. Please enter an artefact and try again.");
             } else { // Otherwise, validate input and try to submit form
 
                 // If the entry-type is 'unique-id'
-                if (entryType === "accession_number") {
+                if (entryType === "unique-id") {
                     // @TODO Validate the input (with regex!)
                     // Look up the record id (send ajax request) and try to submit the form
-                    fitzcolLookupRecordIdAndSubmit();
+                    fouaacLookupRecordIdAndSubmit();
                 }
             }
 
             // If the entry-type is 'url'
             if (entryType === "url") {
                 // Extract the record id from the url
-                var validRecordId = fitzcolExtractRecordId();
+                var validRecordId = fouaacExtractRecordId();
                 // If record id is valid, update the input and submit the form
                 if (validRecordId) {
                     $("#record-id").val(validRecordId);
-                    fitzcolSubmitForm();
+                    fouaacSubmitForm();
                 } else {
-                    fitzcol("Please check your URL for errors and try again.");
+                    fouaacDisplayErrorMessage("Please check your URL for errors and try again.");
                 }
             }
 
             // If the entry-type is 'record-id'
             if (entryType === "record-id") {
-                var validRecordId = fitzcolValidateRecordId();
+                var validRecordId = fouaacValidateRecordId();
                 // If record id is valid, update the input and submit the form
                 if (validRecordId) {
                     $("#record-id").val(validRecordId);
-                    fitzcolSubmitForm();
+                    fouaacSubmitForm();
                 } else {
-                    fitzcolDisplayErrorMessage("Please check your artwork ID for errors and try again.");
+                    fouaacDisplayErrorMessage("Please check your record ID for errors and try again.");
                 }
             }
 
@@ -68,13 +68,13 @@ jQuery(function ($) {
     // If a change is detected in the entry-type selection drop down
     $("#entry-type").change(function () {
         // Reset any error message
-        fitzcolResetErrorMessage();
+        fouaacResetErrorMessage();
         // Get the value of the currently selected option
         var entryType = $('#entry-type option:selected').val();
         // Depending on what entry-type the user chooses, display the label, text input and explanation accordingly
         switch (entryType) {
             case 'url':
-                $('.accession_number').hide();
+                $('.unique-id').hide();
                 $('.record-id').hide();
                 $('.url').show();
                 $('label.url').css('display', 'block');
@@ -82,12 +82,12 @@ jQuery(function ($) {
             case 'unique-id':
                 $('.url').hide();
                 $('.record-id').hide();
-                $('.accession_number').show();
+                $('.unique-id').show();
                 $('label.unique-id').css('display', 'block');
                 break;
             case 'record-id':
                 $('.url').hide();
-                $('.accession_number').hide();
+                $('.unique-id').hide();
                 $('.record-id').show();
                 $('label.record-id').css('display', 'block');
                 break;
@@ -119,7 +119,7 @@ jQuery(function ($) {
      *
      * @return {undefined}
      */
-    function fitzcolSubmitForm() {
+    function fouaacSubmitForm() {
         // Get the form fields
         var values = {};
         $('#TB_ajaxContent form :input').each(function (index, field) {
@@ -139,7 +139,7 @@ jQuery(function ($) {
         };
 
         // Start shortcode text
-        var fitzcolShortcode = '[artwork';
+        var fouaacShortcode = '[artefact';
         // Get the attributes and values
         for (attributes in values) {
             // If not empty or null
@@ -149,18 +149,18 @@ jQuery(function ($) {
                     // If the value has more than 1 word
                     if (countWords(String(values[attributes])) > 1) {
                         // Add the key="value" pair with quotes around the value
-                        fitzcolShortcode += ' ' + attributes + '="' + values[attributes] + '"';
+                        fouaacShortcode += ' ' + attributes + '="' + values[attributes] + '"';
                     } else {
                         // Otherwise just add the key=value pair
-                        fitzcolShortcode += ' ' + attributes + '=' + values[attributes];
+                        fouaacShortcode += ' ' + attributes + '=' + values[attributes];
                     }
                 }
             }
         }
         // End shortcode text
-        fitzcolShortcode += ']';
+        fouaacShortcode += ']';
         // Insert shortcode into the active editor
-        tinyMCE.activeEditor.execCommand('mceInsertContent', false, fitzcolShortcode);
+        tinyMCE.activeEditor.execCommand('mceInsertContent', false, fouaacShortcode);
         // Close Thickbox
         tb_remove();
 
@@ -183,10 +183,10 @@ jQuery(function ($) {
      * @param {string} message Error message.
      * @return {undefined}
      */
-    function fitzcolDisplayErrorMessage(message) {
+    function fouaacDisplayErrorMessage(message) {
         var entryType = $('#entry-type').val();
-        $("#" + entryType + "-explanation").html(message).addClass("fitzcol-validation-error");
-        $("#" + entryType).addClass("fitzcol-validation-error");
+        $("#" + entryType + "-explanation").html(message).addClass("fouaac-validation-error");
+        $("#" + entryType).addClass("fouaac-validation-error");
     }
 
     /**
@@ -194,21 +194,24 @@ jQuery(function ($) {
      *
      * @return {undefined}
      */
-    function fitzcolResetErrorMessage() {
+    function fouaacResetErrorMessage() {
         // If there is an error message
-        if ($(".fitzcol-input").hasClass("fitzcol-validation-error")) {
+        if ($(".artefact-input").hasClass("fouaac-validation-error")) {
             var entryType = $('#entry-type option:selected').val();
             // Remove the error class from the input
-            $("#" + entryType).removeClass("fitzcol-validation-error");
+            $("#" + entryType).removeClass("fouaac-validation-error");
             // Remove error class from explanation and reset explanation text
-            $("#" + entryType + "-explanation").removeClass("fitzcol-validation-error").html(function () {
+            $("#" + entryType + "-explanation").removeClass("fouaac-validation-error").html(function () {
                 var entryType = $('#entry-type').val();
                 switch (entryType) {
                     case 'url':
-                        return "Example: <strong>https://collection.beta.fitz.ms/id/object/656/</strong>";
+                        return "Example: <strong>https://finds.org.uk/database/artefacts/record/id/828850</strong>";
+                        break;
+                    case 'unique-id':
+                        return "Example: <strong>IOW-647A2A</strong>";
                         break;
                     case 'record-id':
-                        return "Example: for https://collection.beta.fitz.ms/id/object/656/ the record ID is <strong>656</strong>"
+                        return "Example: for https://finds.org.uk/database/artefacts/record/id/828850 the record ID is <strong>828850</strong>"
                         break;
                     default:
                 }
@@ -223,9 +226,9 @@ jQuery(function ($) {
      *
      * @return {string} A record id, the empty string if not valid.
      */
-    function fitzcolValidateRecordId() {
+    function fouaacValidateRecordId() {
         var recordId = $("#record-id").val().trim();
-        if (fitzcolIsInt1To999999(recordId)) {
+        if (fouaacIsInt1To999999(recordId)) {
             return recordId;
         } else {
             return '';
@@ -238,22 +241,22 @@ jQuery(function ($) {
      * @param {string} val Value to check.
      * @return {boolean} True if 1-999999, otherwise false.
      */
-    function fitzcolIsInt1To999999(val) {
+    function fouaacIsInt1To999999(val) {
         var num = parseInt(val, 10);
         return !isNaN(num) && val == num && val.toString() == num.toString() && num > 1 && num < 1000000;
     }
 
     /**
-     * Extract the record id from a valid fitzwilliam museum url.
+     * Extract the record id from a valid finds.org.uk url.
      *
      * If the url is not valid, returns the empty string.
      *
      * @return {string} Record id.
      */
-    function fitzcolExtractRecordId() {
-        var prefixWithHttps = "https://collection.beta.fitz.ms/id/object/";
-        var prefixWithHttp = "http://collection.beta.fitz.ms/id/object/";
-        var prefixNoScheme = "collection.beta.fitz.ms/id/object/";
+    function fouaacExtractRecordId() {
+        var prefixWithHttps = "https://finds.org.uk/database/artefacts/record/id/";
+        var prefixWithHttp = "http://finds.org.uk/database/artefacts/record/id/";
+        var prefixNoScheme = "finds.org.uk/database/artefacts/record/id/";
         var prefix = '';
         var recordId = '';
         var url = $("#url").val().trim();
@@ -270,7 +273,7 @@ jQuery(function ($) {
         if (prefix) {
             recordId = url.substring(prefix.length).replace(/\//g, '');
             // If the record id is a number between 1 and 999999, return it
-            if (fitzcolIsInt1To999999(recordId)) {
+            if (fouaacIsInt1To999999(recordId)) {
                 return recordId;
             } else {
                 return '';
@@ -282,18 +285,18 @@ jQuery(function ($) {
 
 
     /**
-     * Lookup an artwork record id from a unique id (aka 'old finds id') and try to submit the form.
+     * Lookup an artefact record id from a unique id (aka 'old finds id') and try to submit the form.
      *
-     * Makes an ajax call to the Fitzwilliam Museum CIIM endpoint server and checks the response to make sure it is a valid unique id
+     * Makes an ajax call to the finds.org.uk Solr server and checks the response to make sure it is a valid unique id
      * and that the record is on public display. If not, displays an error message.
      *
      * @return {undefined}
      */
-    function fitzcolLookupRecordIdAndSubmit() {
+    function fouaacLookupRecordIdAndSubmit() {
         $.ajax({
-            url: 'https://collection.beta.fitz.ms/search/results?query=accession_number%3A'
-            + $("#accession_number").val()
-            + '/json',
+            url: 'https://finds.org.uk/database/search/results/q/old_findID%3A'
+            + $("#unique-id").val()
+            + '/format/json',
             type: 'GET',
             timeout: 5000,
             dataType: 'json',
@@ -301,17 +304,17 @@ jQuery(function ($) {
                 console.log(data);
                 if (data.meta.totalResults == 0) {
                     // No record returned so error
-                    fitzcolDisplayErrorMessage("No artwork with that accession ID is available. Please check and try again.");
+                    fouaacDisplayErrorMessage("No artefact with that unique ID available. Please check and try again.");
                 } else if (data.results[0].id) {
                     // Record id available so update the input value with the record id, and submit the form
                     $('#record-id').val(data.results[0].id);
-                    fitzcolSubmitForm();
+                    fouaacSubmitForm();
                 } else {
-                    fitzcolDisplayErrorMessage("Something has gone wrong. Please check your accession ID for errors and try again.");
+                    fouaacDisplayErrorMessage("Something has gone wrong. Please check your unique ID for errors and try again.");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                fitzcolDisplayErrorMessage("Something has gone wrong when trying to contact finds.org.uk: " +
+                fouaacDisplayErrorMessage("Something has gone wrong when trying to contact finds.org.uk: " +
                     textStatus + " (" + errorThrown + ")");
             }
         });
@@ -321,3 +324,4 @@ jQuery(function ($) {
 
 
 //]]>
+

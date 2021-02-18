@@ -1,17 +1,16 @@
 <?php
 /*
-Plugin Name: Fitzwilliam Museum Object Parser
-Description: Display up-to-date Fitzwilliam Museum Collection data on your Wordpress blog.
+Plugin Name: Finds.org.uk Artefacts and Coins
+Description: Display up-to-date artefacts and coins data from the Portable Antiquities Scheme (finds.org.uk) on your Wordpress blog.
 Version:     1.0.0
-Author:      Daniel Pett/ Mary Chester-Kadwell
-Since:       2021/02/17
-Author URI:  https://museologi.st
+Author:      Mary Chester-Kadwell
+Author URI:  https://finds.org.uk/
 License:     GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Text Domain: museologi.st
+Text Domain: finds-org-uk
 */
 
-/*  Copyright 2021  Daniel Pett  (email : dejp3@cam.ac.uk
+/*  Copyright 2017  Mary Chester-Kadwell  (email : mchester-kadwell@britishmuseum.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 3 as published by
@@ -36,13 +35,13 @@ defined( 'ABSPATH' ) or exit("Plugin must not be accessed directly.");
  * ----------
  */
 
-// Enqueue CSS styles for artwork display
+// Enqueue CSS styles for artefact display
 add_action( 'wp_enqueue_scripts', 'fitzcol_load_styles' );
 // Enqueue CSS styles for shortcode popup form display
-add_action( 'admin_enqueue_scripts', 'fitzcol_form_styles' );
+add_action( 'admin_enqueue_scripts', 'fitzcol_load_form_styles' );
 
 /**
- * Load CSS styles for artwork display
+ * Load CSS styles for artefact display
  */
 function fitzcol_load_styles() {
     wp_register_style( 'fitzcol-display-style', plugins_url('/css/fitzcol-style.css', __FILE__) );
@@ -61,18 +60,18 @@ function fitzcol_load_form_styles() {
 
 /**
  * -------------------
- * SHORTCODE: artwork
+ * SHORTCODE: ARTEFACT
  * -------------------
  */
 
-// Register a shortcode [artwork] to display an artwork record in posts
-add_shortcode( 'artwork', 'fitzcol_artwork' );
+// Register a shortcode [artefact] to display an artefact record in posts
+add_shortcode( 'artefact', 'fitzcol_display_artefact' );
 
 /**
- * Shortcode function for [artwork] shortcode.
+ * Shortcode function for [artefact] shortcode.
  *
  * Shortcode attributes:
- * 'id' is the record id of the fitzcol artwork record - found on the end of the record URL.
+ * 'id' is the record id of the finds.org.uk artefact record - found on the end of the record URL.
  * 'caption-option' can be 'none' to turn off the caption; defaults to 'auto' which displays 'caption-text'
  *  or an automatic caption if no 'caption-text' is provided.
  * 'caption-text' is the desired manual caption text.
@@ -84,20 +83,20 @@ add_shortcode( 'artwork', 'fitzcol_artwork' );
  * @return string HTML to display
  */
 
-function fitzcol_display_artwork( $attr ) {
+function fitzcol_display_artefact( $attr ) {
     // Insert default attribute values
     $attributes = shortcode_atts( array(
-        'id' => '1',
+        'id' => '',
         'caption-option' => 'auto',
-        'caption-text' => 'An image of a Fitzwilliam Museum object',
+        'caption-text' => '',
         'figure-size' => 'medium'
     ),
-        $attr, 'artwork'
+        $attr, 'artefact'
     );
     // Load controller class
     require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitzcol-artwork-controller.php';
-    $artwork_controller = new Fitzcol_Artwork_Controller( $attributes );
-    return $artwork_controller->display_artwork();
+    $artefact_controller = new Fitzcol_Artwork_Controller( $attributes );
+    return $artefact_controller->display_artefact();
 
 }
 
@@ -135,12 +134,12 @@ function fitzcol_shortcode_plugin( $plugin_array ) {
 }
 
 /**
- * Register a button named 'fitzcol' to the editor buttons
+ * Register a button named 'fitzcolF' to the editor buttons
  *
  * @param array $buttons An array of buttons.
  * @return array
  */
-function fitzcol_register_button( $buttons ) {
+function fitzcolF_register_button( $buttons ) {
     array_push( $buttons, 'fitzcol' ); // Button name 'fitzcol'
     return $buttons;
 }

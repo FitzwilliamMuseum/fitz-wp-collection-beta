@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Controller for displaying artwork records.
+ * Controller for displaying artefact records.
  *
  * Description.
  *
@@ -15,7 +15,7 @@ class Fitzcol_Artwork_Controller
      * URLs should use the https protocol.
      *
      * @since 1.0.0
-     * @var string FITZ_REQUIRED_SCHEME Required URL scheme.
+     * @var string FOUACC_REQUIRED_SCHEME Required URL scheme.
      */
     const FITZCOL_REQUIRED_SCHEME = 'https';
 
@@ -24,7 +24,7 @@ class Fitzcol_Artwork_Controller
      *
      * @since 1.0.0
      * @TODO replace with development/production config
-     * @var string FITZ_REQUIRED_HOST Required host path.
+     * @var string FOUACC_REQUIRED_SCHEME Required URL scheme.
      */
     const FITZCOL_REQUIRED_HOST = 'collection.beta.fitz.ms';
 
@@ -32,11 +32,11 @@ class Fitzcol_Artwork_Controller
      * Shortcode attributes.
      */
     /**
-     * Shortcode attribute: URL of a fitzcol record.
+     * Shortcode attribute: URL of a finds.org.uk record.
      *
      * @since 1.0.0
      * @access private
-     * @var string $record_id URL of a fitzcol record.
+     * @var string $record_id URL of a finds.org.uk record.
      */
     private $record_id;
     /**
@@ -74,11 +74,11 @@ class Fitzcol_Artwork_Controller
     private $caption_text_display;
 
     /**
-     * Artwork record object containing all the data from the json response.
+     * Artefact record object containing all the data from the json response.
      *
      * @since 1.0.0
      * @access private
-     * @var object $artwork_record Artwork record object.
+     * @var object $artefact_record Artefact record object.
      */
     private $artwork_record;
 
@@ -92,7 +92,7 @@ class Fitzcol_Artwork_Controller
     private $error_message;
 
     /**
-     * Constructor for Fitzcol_Artwork_Controller class.
+     * Constructor for Fitzcol_Artefact_Controller class.
      *
      * @since 1.0.0
      * @access private
@@ -213,44 +213,44 @@ class Fitzcol_Artwork_Controller
      */
     private function load_error_template_dependency() {
         ob_start();
-        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fitzcol-error.php' );
+        include ( plugin_dir_path( dirname( __FILE__ ) ) . 'views/fouaac-error.php' );
         return ob_get_clean();
 
     }
 
     /**
-     * Displays an artwork record specified by a fitz collection URL.
+     * Displays an artefact record specified by a finds.org.uk URL.
      *
      * @since 1.0.0
      *
      */
-    public function display_artwork() {
+    public function display_artefact() {
         $record_id_valid = $this->validate_record_id( $this->get_record_id() );
         //if the record id is valid
         if ( $record_id_valid ) {
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
-            $artwork_data = $json_importer->import_json();
-            //and there is a 200 OK response from the fitz server
-            if ( $artwork_data['type']['base'] === 'object' ) {
-                //create a new artwork record from the data
-                $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
+            $artefact_data = $json_importer->import_json();
+            //and there is a 200 OK response from the finds.org.uk server
+            if ( $artefact_data['record'] === 'artefact' ) {
+                //create a new artefact record from the data
+                $this->set_artefact_record( new Fitzcol_Artefact( $artefact_data ) );
                 //if there is an image available
-                if ( !is_null( $this->get_artwork_record()->get_image() ) ) {
+                if ( !is_null( $this->get_artefact_record()->get_image_directory() ) ) {
                     //create a caption
-                    $caption = new Fitzcol_Caption_Creator('artwork',
-                        $this->get_artwork_record(),
+                    $caption = new Fitzcol_Caption_Creator('artefact',
+                        $this->get_artefact_record(),
                         $this->get_caption_option(),
                         $this->get_caption_text()
                     );
                     $this->set_caption_text_display($caption->create_caption());
-                    //display the artwork figure
-                    return $this->load_artwork_template_dependency();
+                    //display the artefact figure
+                    return $this->load_artefact_template_dependency();
                 } else { //if there is no image available
                     $this->set_error_message( "No image is available on this record." );
                     return $this->display_error();
                 }
-            } elseif ( !empty($artwork_data) ) { //if there is no valid json response
-                $this->set_error_message( $artwork_data['error message'] );
+            } elseif ( $artefact_data['record'] === 'error' ) { //if there is no valid json response
+                $this->set_error_message( $artefact_data['error message'] );
                 return $this->display_error();
             }
 
@@ -272,14 +272,14 @@ class Fitzcol_Artwork_Controller
     }
 
     /**
-     * Cleans any trailing slashes from the record id provided by the user in the shortcode.
+     * Cleans any trailing slashes from the finds.org.uk record id provided by the user in the shortcode.
      *
      * Also makes sure it is a string.
      *
      * @since 1.0.0
      * @access private
      *
-     * @param mixed $id ID of the fitzwilliam record.
+     * @param mixed $id ID of the finds.org.uk record.
      * @return string $clean_id Cleaned id.
      */
     private function clean_id( $record_id ) {
@@ -292,14 +292,14 @@ class Fitzcol_Artwork_Controller
     }
 
     /**
-     * Basic validation of the fitzwilliam record id provided by the user in the shortcode.
+     * Basic validation of the finds.org.uk record id provided by the user in the shortcode.
      *
      * Checks the id is a string of digits greater than 0 and not a huge number unlikely to be valid.
      *
      * @since 1.0.0
      * @access private
      *
-     * @param string $record_id URL of the fitzwilliam record.
+     * @param string $record_id URL of the finds.org.uk record.
      * @return bool Valid or not.
      */
     private function validate_record_id( $record_id )

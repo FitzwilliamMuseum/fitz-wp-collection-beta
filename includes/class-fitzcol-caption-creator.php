@@ -18,7 +18,7 @@ class Fitzcol_Caption_Creator
 
 
     /**
-     * Fouaac_Caption_Creator constructor.
+     * fitzcol_Caption_Creator constructor.
      */
     public function __construct( $display_type, $data_object, $caption_option, $caption_text ) {
         $this->display_type = $display_type;
@@ -52,8 +52,8 @@ class Fitzcol_Caption_Creator
 
     public function create_caption() {
         switch ( $this->get_display_type() ) {
-            case 'artwork':
-                return $this->create_artwork_caption();
+            case 'artefact':
+                return $this->create_artefact_caption();
         break;
             default:
                 return '';
@@ -61,7 +61,7 @@ class Fitzcol_Caption_Creator
 
     }
 
-    private function create_artwork_caption() {
+    private function create_artefact_caption() {
         switch ( $this->get_caption_option() ) {
             //If the caption-option is 'none', return the empty string
             case 'none':
@@ -77,6 +77,7 @@ class Fitzcol_Caption_Creator
                 //Otherwise, create an automatic caption
                 } else {
                     $text = sprintf("%s %s",
+                        $this->get_data_object()->get_broad_period(),
                         $this->get_data_object()->get_object_type()
                     );
                     $caption = $this->title_string( $text );

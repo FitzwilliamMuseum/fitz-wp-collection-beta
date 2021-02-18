@@ -1,4 +1,5 @@
 /*
+ Finds.org.uk Artefacts and Coins TinyMCE Plugin
  Version 1.0
  Author Mary Chester-Kadwell
  Author URI https://github.com/mchesterkadwell
@@ -30,8 +31,8 @@
          */
         init : function(ed, url) {
 
-            ed.addButton('fitzcol', {
-                title : 'Fitzwilliam Collection Artworks Shortcode',
+            ed.addButton('fouaac', {
+                title : 'Finds.org.uk Artefacts and Coins Shortcode',
                 image : 'https://fitz-cms-images.s3.eu-west-2.amazonaws.com/fvlogo.jpg',
                 onclick: function () {
                     //Adjust width and height values according to the size of the viewport
@@ -42,7 +43,7 @@
                     width = width - 80;
                     height = height - 84;
                     //Display a modal ThickBox to display the form for collecting attribute information from the user
-                    tb_show( 'Fitzwilliam Collection shortcode', '#TB_inline?width=' + width
+                    tb_show( 'Finds.org.uk Artefacts and Coins Shortcode', '#TB_inline?width=' + width
                         + '&height=' + height + '&inlineId=fitzcol-form' );
                     // Load the form
                     jQuery( function() {
@@ -67,15 +68,15 @@
          */
         getInfo : function() {
             return {
-                longname : 'Fitwilliam Museum Collection Shortcode Button',
-                author : 'Daniel Pett/Mary Chester-Kadwell',
-                authorurl : 'https://github.com/portableant',
-                infourl : 'https://github.com/fitzwilliammuseum/',
+                longname : 'Finds.org.uk Artefacts and Coins Shortcode Button',
+                author : 'Mary Chester-Kadwell',
+                authorurl : 'https://github.com/mchesterkadwell',
+                infourl : 'https://github.com/findsorguk/wp-findsorguk',
                 version : "0.1"
             };
         }
     });
 
     // Register plugin
-    tinymce.PluginManager.add( 'fitzcol', tinymce.plugins.fitzcol );
+    tinymce.PluginManager.add( 'fitzcol', tinymce.plugins.fouaac );
 })();
