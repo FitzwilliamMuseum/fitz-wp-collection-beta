@@ -18,8 +18,8 @@
   <figcaption class="fitzcol-caption-text wp-caption-text">
     <?php if ( 'auto' == $this->get_caption_option() ): ?>
       <h3>
-        <?php esc_html_e($this->get_artwork_record()->get_accession_number());?>:
-        <a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>
+
+        <a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e($this->get_artwork_record()->get_accession_number());?>:<?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>
       </h3>
     <?php endif; ?>
   </figcaption>
@@ -30,7 +30,7 @@
     <a href="https://creativecommons.org/licenses/<?php esc_html_e( strtolower( $this->get_artwork_record()->get_image_license_acronym() ) ); ?>/2.0/">
       <?php esc_html_e( $this->get_artwork_record()->get_image_license_acronym() ); ?> 2.0
     </a>
-    
+
   </span>
 
 </figure>
