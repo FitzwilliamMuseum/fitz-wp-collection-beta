@@ -25,7 +25,7 @@ class Fitzcol_Artwork
 
     private $cc_license_acronyms = array(
         'Attribution-NonCommercial-ShareAlike License' => 'BY-NC-SA',
-        'Attribution-NonCommercial License' => 'BY-NC-ND',
+        'Attribution-NonCommercial-No-Derivatives License' => 'BY-NC-ND',
         'Attribution License' => 'BY',
         'Attribution-ShareAlike License' => 'BY-SA'
     );
@@ -40,7 +40,6 @@ class Fitzcol_Artwork
         $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview']['location'];
         $this->original_image = $data[ 'multimedia' ][0]['processed']['original']['location'];
         $this->image_copyright_holder = $data[ 'legal' ]['credit_line'];
-        $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
         $this->title = $data['title'][0]['value'];
         $this->description = $data['note'][0]['value'];
     }
@@ -122,9 +121,7 @@ class Fitzcol_Artwork
      */
     public function get_image_license()
     {
-        if($this->image_license == ''){
-          $this->image_license = 'BY-NC-ND';
-        }
+        $this->image_license = 'BY-NC-ND';
         return $this->image_license;
     }
 
@@ -140,7 +137,7 @@ class Fitzcol_Artwork
      */
     public function get_image_license_acronym()
     {
-
+        $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
         return $this->image_license_acronym;
     }
 
