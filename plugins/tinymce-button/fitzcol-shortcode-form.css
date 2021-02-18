@@ -3,11 +3,11 @@ form#fitzcol-shortcode .record-id {
     display: none;
 }
 
-form#fitzcol-shortcode p.fouaac-validation-error {
+form#fitzcol-shortcode p.fitzcol-validation-error {
     color: red;
 }
 
-form#fitzcol-shortcode input.fouaac-validation-error {
+form#fitzcol-shortcode input.fitzcol-validation-error {
     border:1px solid red;
 }
 

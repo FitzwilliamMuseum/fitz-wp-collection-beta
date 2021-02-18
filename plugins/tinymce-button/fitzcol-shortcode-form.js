@@ -28,7 +28,7 @@ jQuery(function ($) {
             } else { // Otherwise, validate input and try to submit form
 
                 // If the entry-type is 'unique-id'
-                if (entryType === "unique-id") {
+                if (entryType === "accession_number") {
                     // @TODO Validate the input (with regex!)
                     // Look up the record id (send ajax request) and try to submit the form
                     fitzcolLookupRecordIdAndSubmit();
@@ -74,7 +74,7 @@ jQuery(function ($) {
         // Depending on what entry-type the user chooses, display the label, text input and explanation accordingly
         switch (entryType) {
             case 'url':
-                $('.unique-id').hide();
+                $('.accession_number').hide();
                 $('.record-id').hide();
                 $('.url').show();
                 $('label.url').css('display', 'block');
@@ -82,7 +82,7 @@ jQuery(function ($) {
             case 'unique-id':
                 $('.url').hide();
                 $('.record-id').hide();
-                $('.unique-id').show();
+                $('.accession_number').show();
                 $('label.unique-id').css('display', 'block');
                 break;
             case 'record-id':

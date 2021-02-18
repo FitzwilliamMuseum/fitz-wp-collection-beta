@@ -49,8 +49,10 @@ class Fitzcol_Json_Importer
 public function import_json() {
   //get the response from the url within the timeout time
   $response = wp_remote_get( $this->get_json_url(),
-  array('timeout' => $this->response_timeout,
-  'redirection' => $this->redirects_allowed)
+  array(
+    'timeout' => $this->response_timeout,
+    'redirection' => $this->redirects_allowed
+  )
 );
 //if there is a wp error in the get request itself (like a timeout)
 if ( is_wp_error( $response )) {
