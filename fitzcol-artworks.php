@@ -65,7 +65,7 @@ function fitzcol_load_form_styles() {
  */
 
 // Register a shortcode [artefact] to display an artefact record in posts
-add_shortcode( 'artefact', 'fitzcol_display_artefact' );
+add_shortcode( 'artwork', 'fitzcol_display_artwork' );
 
 /**
  * Shortcode function for [artefact] shortcode.
@@ -83,7 +83,7 @@ add_shortcode( 'artefact', 'fitzcol_display_artefact' );
  * @return string HTML to display
  */
 
-function fitzcol_display_artefact( $attr ) {
+function fitzcol_display_artwork( $attr ) {
     // Insert default attribute values
     $attributes = shortcode_atts( array(
         'id' => '',
@@ -91,12 +91,13 @@ function fitzcol_display_artefact( $attr ) {
         'caption-text' => '',
         'figure-size' => 'medium'
     ),
-        $attr, 'artefact'
+        $attr, 'artwork'
     );
     // Load controller class
     require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitzcol-artwork-controller.php';
     $artefact_controller = new Fitzcol_Artwork_Controller( $attributes );
-    return $artefact_controller->display_artefact();
+    return 'Boom';
+    // return $artefact_controller->display_artefact();
 
 }
 
