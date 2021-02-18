@@ -21,6 +21,7 @@ class Fitzcol_Artwork
     private $image_license;
     private $image_license_acronym;
     private $title;
+    private $description;
 
     private $cc_license_acronyms = array(
         'Attribution-NonCommercial-ShareAlike License' => 'BY-NC-SA',
@@ -42,6 +43,7 @@ class Fitzcol_Artwork
         $this->image_license = 'BY-NC-ND';
         $this->image_license_acronym = $this->lookup_license_acronym( 'BY-NC-ND' );
         $this->title = $data['title'][0]['value'];
+        $this->description = $data['description'][0]['value']
     }
     /**
      * @return string
@@ -121,6 +123,13 @@ class Fitzcol_Artwork
         return $this->image_license;
     }
 
+    /**
+     * @return string
+     */
+    public function get_description()
+    {
+        return $this->description;
+    }
     /**
      * @return string
      */

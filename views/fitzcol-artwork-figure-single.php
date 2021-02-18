@@ -14,7 +14,7 @@
          (<?php esc_html_e( $this->get_artwork_record()->get_image_copyright_holder() ); ?>
          <?php _e( $this->get_artwork_record()->get_image_license_acronym() ); ?> 2.0)"
     >
-    <small class="fitzcol-copyright">
+    <span class="fitzcol-copyright">
         <?php esc_html_e( $this->get_artwork_record()->get_image_copyright_holder() ); ?>
         <a href="https://creativecommons.org/licenses/<?php esc_html_e( strtolower( $this->get_artwork_record()->get_image_license_acronym() ) ); ?>/2.0/">
             <?php esc_html_e( $this->get_artwork_record()->get_image_license_acronym() ); ?> 2.0
@@ -22,11 +22,12 @@
         <?php if ( 'none' == $this->get_caption_option() ): ?>
             (<a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>)
         <?php endif; ?>
-    </small>
-    <figcaption class="fouaac-caption-text wp-caption-text">
-        <?php esc_html_e( $this->get_caption_text_display() ); ?>
+    </span>
+    <figcaption class="fitzcol-caption-text wp-caption-text">
+        <?php esc_html_e( $this->get_description() ); ?>
         <?php if ( 'auto' == $this->get_caption_option() ): ?>
         <a href="https://collection.beta.fitz.ms/id/object/<?php esc_html_e($this->get_artwork_record()->get_id());?>"><?php esc_html_e( $this->get_artwork_record()->get_title() );?></a>
+        <?php esc_html_e($this->get_artwork_record()->get_description());?>
         <?php endif; ?>
     </figcaption>
 
