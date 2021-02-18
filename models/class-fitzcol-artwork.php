@@ -24,10 +24,10 @@ class Fitzcol_Artwork
     private $description;
 
     private $cc_license_acronyms = array(
-        'Attribution-NonCommercial-ShareAlike License' => 'BY-NC-SA',
-        'Attribution-NonCommercial-No-Derivatives License' => 'BY-NC-ND',
-        'Attribution License' => 'BY',
-        'Attribution-ShareAlike License' => 'BY-SA'
+        'Attribution-NonCommercial-ShareAlike' => 'BY-NC-SA',
+        'Attribution-NonCommercial-No-Derivatives' => 'BY-NC-ND',
+        'Attribution' => 'BY',
+        'Attribution-ShareAlike' => 'BY-SA'
     );
 
     public function __construct( array $data )
