@@ -230,17 +230,7 @@ class Fitzcol_Artwork_Controller
         if ( $record_id_valid ) {
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
-            echo '<pre>';
-            var_export($artwork_data['multimedia'][0]['processed']['mid']);
-            echo "</pre>";
-            print($artwork_data['type']['base']);
-
             $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
-            echo $this->get_artwork_record()->get_id();
-            echo $this->get_artwork_record()->get_accession_number();
-            echo $this->get_artwork_record()->get_object_type();
-            echo $this->get_artwork_record()->get_medium_image();
-
             //and there is a 200 OK response from the finds.org.uk server
             if ( $artwork_data['type']['base'] === 'object' ) {
                 //create a new artwork record from the data
