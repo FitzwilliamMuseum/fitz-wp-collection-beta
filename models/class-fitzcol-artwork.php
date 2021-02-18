@@ -39,7 +39,7 @@ class Fitzcol_Artwork
         $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview'][0]['location'];
         $this->original_image = $data[ 'multimedia' ][0]['processed']['original'][0]['location'];
         $this->image_copyright_holder = $data[ 'legal' ]['credit_line'];
-        $this->image_license = $data[ 'imageLicense' ];
+        $this->image_license = 'BY-NC-ND';
         $this->image_license_acronym = $this->lookup_license_acronym( $data[ 'imageLicense' ] );
         $this->title = $data['title'][0]['value'];
     }
