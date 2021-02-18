@@ -233,6 +233,10 @@ class Fitzcol_Artwork_Controller
 
             var_export($artwork_data);
             print($artwork_data['type']['base']);
+
+            $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
+            echo $this->get_artwork_record()->get_id();
+            echo $this->get_artwork_record()->get_accession_number();
             //and there is a 200 OK response from the finds.org.uk server
             if ( $artwork_data['type']['base'] === 'object' ) {
                 //create a new artwork record from the data
