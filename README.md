@@ -37,12 +37,12 @@ The shortcode takes the following attributes:
 * **caption-option** - whether to display a caption or not (optional)
   * auto - caption is automatically generated from the record or the caption-text provided (default)
   * none - no caption
-* **Display type** - type of HTML to return
+* **display type** - type of HTML to return
   * Figure (Image in Bootstrap layout) with caption and link to record
   * Card - (Bootstrap card layout) with caption and descriptive text
   * Image - just an html image
 * **caption-text** - the text to display as the caption (optional)
-* **Image-size** - the relative size of the image
+* **image-size** - the relative size of the image
   * preview
   * medium (default)
   * large
