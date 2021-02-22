@@ -67,7 +67,7 @@ You can enter the artwork as:
 
 * URL - e.g. https://collection.beta.fitz.ms/id/object/656/
 * Record ID - which is the id found at the end of the URL e.g. 656
-* Accession number - e.g. M.12-1904
+* Accession number - e.g. M.12-1904 - this is to come shortly as the system does not present json code for this query right now. 
 
 Press 'Insert Shortcode' to check your input and create your shortcode.
 
