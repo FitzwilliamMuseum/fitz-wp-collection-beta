@@ -1,7 +1,9 @@
 # Fitzwilliam Museum Artworks
 
 A WordPress plugin that creates <a href="https://en.support.wordpress.com/shortcodes/">shortcodes</a>
-for displaying up-to-date Fitzwillliam Museum artworks on your WordPress site.
+for displaying up-to-date Fitzwilliam Museum artworks on your WordPress site.
+
+This plugin is based on the work that @marychesterkadwell created for @findsorguk in 2017 for the PastExplorers project. As ever we stand on the shoulders of giants. 
 
 ## Fitzwilliam Museum Open Data
 
@@ -67,7 +69,7 @@ You can enter the artwork as:
 
 * URL - e.g. https://collection.beta.fitz.ms/id/object/656/
 * Record ID - which is the id found at the end of the URL e.g. 656
-* Accession number - e.g. M.12-1904 - this is to come shortly as the system does not present json code for this query right now. 
+* Accession number - e.g. M.12-1904 - this is to come shortly as the system does not present json code for this query right now.
 
 Press 'Insert Shortcode' to check your input and create your shortcode.
 
