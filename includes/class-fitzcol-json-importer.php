@@ -62,7 +62,7 @@ class Fitzcol_Json_Importer
                 $json_body = wp_remote_retrieve_body( $response );
                 $json_object = json_decode( $json_body, true );
                 // $json_as_php_array = $json_object[ 'record' ][ 0 ];
-                // $json_as_php_array['record'] = 'artefact';
+                // $json_as_php_array['record'] = 'artwork';
                 return $json_object;
             } else {
                 return $this->report_error( $response_code );
@@ -79,30 +79,30 @@ class Fitzcol_Json_Importer
         switch ( $error_info ) {
             case 301: // Moved permanently. Server returns this when the record is not on public display.
                 //(Then redirects to an information page. We don't follow the redirect here.)
-                $error['error message'] = "The artefact record you have specified is not
+                $error['error message'] = "The artwork record you have specified is not
                                             on public display so cannot be used
                                             (error {$error_info}).";
                 break;
-            case 401: //Unauthorized. Server returns this when the path in the artefact URL has been malformed.
+            case 401: //Unauthorized. Server returns this when the path in the artwork URL has been malformed.
                 //Hopefully the user should never see this as the path is hard coded and the parameters validated!
-                $error['error message'] = "Your artefact record URL is malformed and caused an error on the server
+                $error['error message'] = "Your artwork record URL is malformed and caused an error on the server
                                             (error {$error_info}).";
                 break;
             case 404: //Not found.
-                $error['error message'] = "The artefact record you have specified cannot be found
+                $error['error message'] = "The artwork record you have specified cannot be found
                                             (error {$error_info}).";
                 break;
             case 410: //Gone.
-                $error['error message'] = "The artefact record you have specified has been removed permanently
+                $error['error message'] = "The artwork record you have specified has been removed permanently
                                             (error {$error_info}).";
                 break;
             case 500: //Internal server error.
-                $error['error message'] = "The artefact record you have specified has returned a server error
+                $error['error message'] = "The artwork record you have specified has returned a server error
                                             (error {$error_info}).";
                 break;
             default:
-                $error['error message'] = "There was some problem fetching the artefact record you specified.
-                                            You may have a connection problem or the finds.org.uk database might be down
+                $error['error message'] = "There was some problem fetching the artwork record you specified.
+                                            You may have a connection problem or the collection.beta.fitz.ms database might be down
                                             (error {$error_info}).";
         }
         return $error;

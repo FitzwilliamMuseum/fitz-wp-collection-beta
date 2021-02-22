@@ -32,11 +32,11 @@ class Fitzcol_Artwork_Controller
      * Shortcode attributes.
      */
     /**
-     * Shortcode attribute: URL of a finds.org.uk record.
+     * Shortcode attribute: URL of a collection.beta.fitz.ms record.
      *
      * @since 1.0.0
      * @access private
-     * @var string $record_id URL of a finds.org.uk record.
+     * @var string $record_id URL of a collection.beta.fitz.ms record.
      */
     private $record_id;
     /**
@@ -47,6 +47,17 @@ class Fitzcol_Artwork_Controller
      * @var string $caption_option Caption option.
      */
     private $caption_option;
+
+    /**
+     * Shortcode attribute: whether the caption displays or not.
+     *
+     * @since 1.0.0
+     * @access private
+     * @var string $caption_option Caption option.
+     */
+    private $image_size;
+
+    private $image_path;
     /**
      * Shortcode attribute: caption text provided by the user.
      *
@@ -103,7 +114,8 @@ class Fitzcol_Artwork_Controller
         $this->record_id = $this->clean_id( $attributes['id'] );
         $this->caption_option = sanitize_text_field( $attributes['caption-option'] );
         $this->caption_text = sanitize_text_field( $attributes['caption-text'] );
-        $this->figure_size = sanitize_text_field( $attributes['figure-size'] );
+        // $this->figure_size = sanitize_text_field( $attributes['figure-size'] );
+        $this->image_size = sanitize_text_field( $attributes['image-size'] );
         $this->load_dependencies();
     }
 
@@ -131,6 +143,12 @@ class Fitzcol_Artwork_Controller
     /**
      * @return string
      */
+    public function get_image_option() {
+        return $this->image_size;
+    }
+    /**
+     * @return string
+     */
     public function get_figure_size() {
         return $this->figure_size;
     }
@@ -147,6 +165,18 @@ class Fitzcol_Artwork_Controller
      */
     public function set_caption_text_display( $caption_text_display ) {
         $this->caption_text_display = $caption_text_display;
+    }
+
+    /**
+     *
+     */
+    public function set_image_display( $image ) {
+        $function = $this->get_image($image);
+        $this->image_path = $function;
+    }
+
+    public function get_image_display(){
+       return $this->image_path;
     }
 
     /**
@@ -218,8 +248,10 @@ class Fitzcol_Artwork_Controller
 
     }
 
+
+
     /**
-     * Displays an artwork record specified by a finds.org.uk URL.
+     * Displays an artwork record specified by a collection.beta.fitz.ms URL.
      *
      * @since 1.0.0
      *
@@ -231,20 +263,21 @@ class Fitzcol_Artwork_Controller
             $json_importer = new Fitzcol_Json_Importer( $this->get_record_id() );
             $artwork_data = $json_importer->import_json();
             $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
-            //and there is a 200 OK response from the finds.org.uk server
+            //and there is a 200 OK response from the collection.beta.fitz.ms server
             if ( $artwork_data['type']['base'] === 'object' ) {
                 //create a new artwork record from the data
                 $this->set_artwork_record( new Fitzcol_Artwork( $artwork_data ) );
                 //if there is an image available
                 if ( !is_null( $this->get_artwork_record()->get_medium_image() ) ) {
-                  
+
                     //create a caption
                     $caption = new Fitzcol_Caption_Creator('artwork',
                         $this->get_artwork_record(),
                         $this->get_caption_option(),
-                        $this->get_caption_text()
+                        $this->get_caption_text(),
                     );
                     $this->set_caption_text_display($caption->create_caption());
+                    $this->set_image_display($this->image_size);
                     //display the artwork figure
                     return $this->load_artwork_template_dependency();
                 } else {
@@ -275,14 +308,14 @@ class Fitzcol_Artwork_Controller
     }
 
     /**
-     * Cleans any trailing slashes from the finds.org.uk record id provided by the user in the shortcode.
+     * Cleans any trailing slashes from the collection.beta.fitz.ms record id provided by the user in the shortcode.
      *
      * Also makes sure it is a string.
      *
      * @since 1.0.0
      * @access private
      *
-     * @param mixed $id ID of the finds.org.uk record.
+     * @param mixed $id ID of the collection.beta.fitz.ms record.
      * @return string $clean_id Cleaned id.
      */
     private function clean_id( $record_id ) {
@@ -295,14 +328,14 @@ class Fitzcol_Artwork_Controller
     }
 
     /**
-     * Basic validation of the finds.org.uk record id provided by the user in the shortcode.
+     * Basic validation of the collection.beta.fitz.ms record id provided by the user in the shortcode.
      *
      * Checks the id is a string of digits greater than 0 and not a huge number unlikely to be valid.
      *
      * @since 1.0.0
      * @access private
      *
-     * @param string $record_id URL of the finds.org.uk record.
+     * @param string $record_id URL of the collection.beta.fitz.ms record.
      * @return bool Valid or not.
      */
     private function validate_record_id( $record_id )
@@ -326,4 +359,19 @@ class Fitzcol_Artwork_Controller
         return true;
     }
 
+    private $sizes = array(
+      'preview',
+      'medium',
+      'large',
+      'original'
+    );
+
+    public function get_image($image) {
+        if(in_array($image, $this->sizes)){
+          $imagefunction = 'get_' . $image . '_image';
+        } else {
+          $imagefunction = 'get_medium_image';
+        }
+        return $imagefunction;
+    }
 }

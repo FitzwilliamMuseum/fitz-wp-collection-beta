@@ -16,9 +16,7 @@ The simplest possible shortcode just needs the record id and inserts a picture a
 
 You can also specify a caption text and the image size*:
 
-`[artwork id=828850 caption-text="An incomplete post medieval umbonate bridle boss" figure-size=large]`
-
-*image size is not yet implemented.
+`[artwork id=828850 caption-text="An incomplete post medieval umbonate bridle boss" image-size=large]`
 
 Or, if you prefer, no caption at all:
 
@@ -35,10 +33,11 @@ The shortcode takes the following attributes:
   * auto - caption is automatically generated from the record or the caption-text provided (default)
   * none - no caption
 * **caption-text** - the text to display as the caption (optional)
-* **Image-size** - the relative size of the image (_not yet implemented_)
-  * small
+* **Image-size** - the relative size of the image
+  * preview
   * medium (default)
   * large
+  * original
 
 ## Editor button
 
@@ -54,6 +53,7 @@ You can enter the artwork as:
 
 * URL - e.g. https://collection.beta.fitz.ms/id/object/656/
 * Record ID - which is the id found at the end of the URL e.g. 656
+* Accession number - e.g. M.12-1904
 
 Press 'Insert Shortcode' to check your input and create your shortcode.
 
@@ -76,18 +76,18 @@ do this.
     Navigate to the wp-content/plugins directory of your WordPress installation and clone this repository:
 
 
-    Go to the 'Plugins' page of your WordPress installation and find 'Finds.org.uk artworks and Coins' in the list.
+    Go to the 'Plugins' page of your WordPress installation and find 'collection.beta.fitz.ms artworks and Coins' in the list.
     To activate the plugin click 'Activate' (or 'Network Activate' if you have a multisite installation and want it to be
 available to all the sites in your installation).
 
 # How it works
 
-Fitzwilliam Museum provides JSON versions of its artwork records and search results, which are computer readable.
-The user inserts a shortcode into a post with an artwork record id and the plugin fetches the data for that
-record from the finds.org.uk JSON feeds.
+The Fitzwilliam Museum provides JSON versions of its artwork records and search results, which are computer readable and come directly from elasticsearch.
+
+The user inserts a shortcode into a post with an artwork record id and the plugin fetches the data for that record from the collection.beta.fitz.ms JSON feeds.
 
 
-## Example JSON response from finds.org.uk
+## Example JSON response from collection.beta.fitz.ms
 
 ```
 {

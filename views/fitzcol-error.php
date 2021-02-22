@@ -1,14 +1,13 @@
 <?php
 /**
- * Template used to display an error message.
- *
- */
+* Template used to display an error message.
+*
+*/
 ?>
 
 <p>
-    <b>Something has gone wrong with your Finds.org.uk Artefacts and Coins shortcode:</b>
+  <strong>Something has gone wrong with your Fitzwilliam Museum shortcode.</strong>
 </p>
 <p>
-    <b><?php echo esc_html( $this->get_error_message() ) ?></b>
-
+  <strong><?php echo esc_html( $this->get_error_message() ) ?></strong>
 </p>

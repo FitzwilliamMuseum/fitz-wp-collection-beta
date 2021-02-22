@@ -1,11 +1,14 @@
 /*
- Finds.org.uk Artefacts and Coins TinyMCE Plugin
+ Fitzwilliam Museum Collection shortcode  TinyMCE Plugin
  Version 1.0
  Author Mary Chester-Kadwell
  Author URI https://github.com/mchesterkadwell
+ Author Daniel Pett
  */
 
-/*  Copyright 2017  Mary Chester-Kadwell  (email : mchester-kadwell@britishmuseum.org)
+/*
+ Copyright 2017  Mary Chester-Kadwell  (email : mchester-kadwell@britishmuseum.org)
+ Copyright 2021  Mary Chester-Kadwell  (email : dejp3@cam.ac.uk)
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License version 3 as published by
@@ -31,8 +34,8 @@
          */
         init : function(ed, url) {
 
-            ed.addButton('fouaac', {
-                title : 'Finds.org.uk Artefacts and Coins Shortcode',
+            ed.addButton('fitzcol', {
+                title : 'Fizwilliam Museum Collection Shortcode',
                 image : 'https://fitz-cms-images.s3.eu-west-2.amazonaws.com/fvlogo.jpg',
                 onclick: function () {
                     //Adjust width and height values according to the size of the viewport
@@ -40,10 +43,11 @@
                     var viewport_height = jQuery(window).height();
                     var width = ( 720 < viewport_width ) ? 720 : viewport_width;
                     var height = ( viewport_height > 600 ) ? 600 : viewport_height;
-                    width = width - 80;
-                    height = height - 84;
+                    // width = width - 80;
+                    // height = height - 84;
+                    height = 720;
                     //Display a modal ThickBox to display the form for collecting attribute information from the user
-                    tb_show( 'Finds.org.uk Artefacts and Coins Shortcode', '#TB_inline?width=' + width
+                    tb_show( 'Fitzwilliam Museum Artworks and Coins Shortcode', '#TB_inline?width=' + width
                         + '&height=' + height + '&inlineId=fitzcol-form' );
                     // Load the form
                     jQuery( function() {
@@ -68,15 +72,15 @@
          */
         getInfo : function() {
             return {
-                longname : 'Finds.org.uk Artefacts and Coins Shortcode Button',
-                author : 'Mary Chester-Kadwell',
-                authorurl : 'https://github.com/mchesterkadwell',
-                infourl : 'https://github.com/findsorguk/wp-findsorguk',
+                longname : 'Fitzwilliam Museum Collection Shortcode Button',
+                author : 'Mary Chester-Kadwell/ Daniel Pett',
+                authorurl : 'https://github.com/fitzwilliammuseum',
+                infourl : 'https://github.com/fitzwilliammuseum/wp-collection-beta',
                 version : "0.1"
             };
         }
     });
 
     // Register plugin
-    tinymce.PluginManager.add( 'fitzcol', tinymce.plugins.fouaac );
+    tinymce.PluginManager.add( 'fitzcol', tinymce.plugins.fitzcol );
 })();

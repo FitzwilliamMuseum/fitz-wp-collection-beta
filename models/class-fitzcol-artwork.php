@@ -29,6 +29,13 @@ class Fitzcol_Artwork
         'Attribution-ShareAlike' => 'BY-SA'
     );
 
+    private $sizes = array(
+      'preview',
+      'medium',
+      'large',
+      'original'
+    );
+
     public function __construct( array $data )
     {
         $this->id = $data[ 'identifier' ][1]['priref'];
@@ -38,10 +45,33 @@ class Fitzcol_Artwork
         $this->large_image = $data[ 'multimedia' ][0]['processed']['large']['location'];
         $this->preview_image = $data[ 'multimedia' ][0]['processed']['preview']['location'];
         $this->original_image = $data[ 'multimedia' ][0]['processed']['original']['location'];
-        $this->image_copyright_holder = $data[ 'legal' ]['credit_line'];
-        $this->title = $data['title'][0]['value'];
-        $this->description = $data['note'][0]['value'];
+        if(array_key_exists('legal', $data)){
+            $this->image_copyright_holder = $data[ 'legal' ]['credit_line'];
+        } else {
+            $this->image_copyright_holder ='The Fitzwilliam Museum, University of Cambridge';
+        }
+        if(array_key_exists('title', $data)){
+          $this->title = $data['title'][0]['value'];
+        } else {
+          $this->title = '';
+        }
+        if(array_key_exists('note', $data)){
+          $this->description = $data['note'][0]['value'];
+        } else {
+          $this->description = 'This object has no descriptive text available';
+        }
+
     }
+
+    public function get_image($image) {
+        if(in_array($image, $this->sizes)){
+          $imagefunction = 'get_' . $image . '_image';
+        } else {
+          $imagefunction = 'get_medium_image';
+        }
+        return $this->$imagefunction();
+    }
+
     /**
      * @return string
      */
@@ -102,16 +132,11 @@ class Fitzcol_Artwork
     {
         return $this->original_image;
     }
-
-
     /**
      * @return string
      */
     public function get_image_copyright_holder()
     {
-        if($this->image_copyright_holder == '')  {
-          $this->image_copyright_holder = 'The Fitzwilliam Museum, University of Cambridge';
-        }
         return $this->image_copyright_holder;
     }
 
@@ -160,5 +185,6 @@ class Fitzcol_Artwork
             return null;
         }
     }
+
 
 }

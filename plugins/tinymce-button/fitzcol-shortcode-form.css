@@ -1,32 +1,42 @@
-form#fouaac-shortcode .unique-id,
-form#fouaac-shortcode .record-id {
+form#fitzcol-shortcode .unique-id,
+form#fitzcol-shortcode .record-id {
     display: none;
 }
 
-form#fouaac-shortcode p.fouaac-validation-error {
+form#fitzcol-shortcode p.fitzcol-validation-error {
     color: red;
 }
 
-form#fouaac-shortcode input.fouaac-validation-error {
+form#fitzcol-shortcode input.fitzcol-validation-error {
     border:1px solid red;
 }
 
-form#fouaac-shortcode fieldset {
+form#fitzcol-shortcode fieldset {
     margin-bottom: 25px;
 }
 
-form#fouaac-shortcode fieldset legend {
+form#fitzcol-shortcode fieldset legend {
     padding-bottom: 5px;
     font-size: 18px
 }
 
-form#fouaac-shortcode fieldset label {
+form#fitzcol-shortcode fieldset label {
     padding-top: 5px;
     display:block;
     font-size: 14px
 }
 
-form#fouaac-shortcode fieldset p {
+form#fitzcol-shortcode fieldset p {
     margin: 0;
     padding: 0
+}
+
+.fitzcol-legend {
+  font-weight: bold;
+  font-size: 1.17em;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+form#fitzcol-shortcode {
+  height:100% important!;
 }

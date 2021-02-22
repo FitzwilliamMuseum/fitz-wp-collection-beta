@@ -15,7 +15,7 @@ Text Domain: finds-org-uk
 /*
     Copyright 2017  Mary Chester-Kadwell
     Copyright 2021  Daniel Pett
-  
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 3 as published by
     the Free Software Foundation.
@@ -79,7 +79,7 @@ add_shortcode( 'artwork', 'fitzcol_display_artwork' );
  * 'caption-option' can be 'none' to turn off the caption; defaults to 'auto' which displays 'caption-text'
  *  or an automatic caption if no 'caption-text' is provided.
  * 'caption-text' is the desired manual caption text.
- * 'figure-size' is the display size of the image; can be 'small', 'medium' or 'large'; defaults to 'medium'.
+ * 'figure-size' is the display size of the image; can be 'preview', 'medium', 'large' or 'original'; defaults to 'medium'.
  * @TODO implement 'figure-size'
  *
  * @since 1.0.0
@@ -93,14 +93,14 @@ function fitzcol_display_artwork( $attr ) {
         'id' => '',
         'caption-option' => 'auto',
         'caption-text' => '',
-        'figure-size' => 'medium'
+        'figure-size' => 'medium',
+        'image-size' => 'medium'
     ),
         $attr, 'artwork'
     );
     // Load controller class
     require_once plugin_dir_path( __FILE__ ) . 'controllers/class-fitzcol-artwork-controller.php';
     $artwork_controller = new Fitzcol_Artwork_Controller( $attributes );
-    // return 'Boom';
     return $artwork_controller->display_artwork();
 
 }
@@ -144,7 +144,7 @@ function fitzcol_shortcode_plugin( $plugin_array ) {
  * @param array $buttons An array of buttons.
  * @return array
  */
-function fitzcolF_register_button( $buttons ) {
+function fitzcol_register_button( $buttons ) {
     array_push( $buttons, 'fitzcol' ); // Button name 'fitzcol'
     return $buttons;
 }

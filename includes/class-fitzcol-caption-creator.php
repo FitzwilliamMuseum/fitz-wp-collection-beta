@@ -16,51 +16,47 @@ class Fitzcol_Caption_Creator
     private $caption_option;
     private $caption_text;
 
+
     /**
      * fitzcol_Caption_Creator constructor.
      */
-    public function __construct( $display_type, $data_object, $caption_option, $caption_text ) {
+    public function __construct( $display_type, $data_object, $caption_option, $caption_text  ) {
         $this->display_type = $display_type;
         $this->data_object = $data_object;
         $this->caption_option = $caption_option;
         $this->caption_text = $caption_text;
-
     }
 
 
     function get_display_type() {
         return $this->display_type;
-
     }
 
     function get_data_object() {
         return $this->data_object;
-
     }
 
     function get_caption_option() {
         return $this->caption_option;
-
     }
 
     function get_caption_text() {
         return $this->caption_text;
-
     }
+
 
 
     public function create_caption() {
         switch ( $this->get_display_type() ) {
-            case 'artefact':
-                return $this->create_artefact_caption();
+            case 'artwork':
+                return $this->create_artwork_caption();
         break;
             default:
                 return '';
         }
-
     }
 
-    private function create_artefact_caption() {
+    private function create_artwork_caption() {
         switch ( $this->get_caption_option() ) {
             //If the caption-option is 'none', return the empty string
             case 'none':
@@ -93,13 +89,11 @@ class Fitzcol_Caption_Creator
         $lower_string = strtolower( $string );
         $title_string = ucfirst( $lower_string );
         return $title_string;
-
     }
 
     private function trim_string( $string ) {
         $trim_string = trim( $string );
         return $trim_string;
-
     }
 
 }
