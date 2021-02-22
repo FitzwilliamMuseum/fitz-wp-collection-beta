@@ -6,21 +6,26 @@ for displaying up-to-date Fitzwillliam Museum artworks on your WordPress site.
 ## Fitzwilliam Museum Open Data
 
 Most images and all public data on the Fitzwilliam Museum collection are Creative Commons licensed.
+
 Some images are restricted due to artist copyright.
 
 ## Shortcodes
 
 The simplest possible shortcode just needs the record id and inserts a picture and caption automatically:
 
-`[artwork id=828850]`
+`[artwork id=656]`
 
 You can also specify a caption text and the image size*:
 
-`[artwork id=828850 caption-text="An incomplete post medieval umbonate bridle boss" image-size=large]`
+`[artwork id=656 caption-text="An incomplete post medieval umbonate bridle boss" image-size=large]`
 
 Or, if you prefer, no caption at all:
 
-`[artwork id=828850 caption-option=none]`
+`[artwork id=656 caption-option=none]`
+
+Or you can choose the HTML type that is returned (Figure, Card or Image - Bootstrap style):
+
+`[artwork id=656 display-type=card caption="A crime in action"]`
 
 All the images come with copyright information and an attribution.
 
@@ -32,6 +37,10 @@ The shortcode takes the following attributes:
 * **caption-option** - whether to display a caption or not (optional)
   * auto - caption is automatically generated from the record or the caption-text provided (default)
   * none - no caption
+* **Display type** - type of HTML to return
+  * Figure (Image in Bootstrap layout) with caption and link to record
+  * Card - (Bootstrap card layout) with caption and descriptive text
+  * Image - just an html image
 * **caption-text** - the text to display as the caption (optional)
 * **Image-size** - the relative size of the image
   * preview
@@ -950,7 +959,6 @@ GPL v3
 # To do
 
 * Caching of data to prevent unnecessary get requests and so speed up posts and pages
-* Image size options
 * Admin option to suppress error messages if desired
 
 # Known issues

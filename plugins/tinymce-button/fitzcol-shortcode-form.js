@@ -95,6 +95,34 @@ jQuery(function ($) {
         }
     });
 
+
+    /**
+     * Show the input (url, unique-id or record-id) to match whatever entry-type is chosen by the user.
+     */
+    // If a change is detected in the entry-type selection drop down
+    $("#display-format").change(function () {
+        // Reset any error message
+        fitzcolResetErrorMessage();
+        // Get the value of the currently selected option
+        var formatType = $('#display-format option:selected').val();
+        // Depending on what entry-type the user chooses, display the label, text input and explanation accordingly
+        switch (formatType) {
+            case 'image':
+                $('#caption-text').hide();
+                $('label[for=caption-option]').hide();
+                $('#caption-option').hide();
+                $('label[for=caption-text]').hide();
+                $("#caption-text-explanation").hide();
+                break;
+
+            default:
+                $('#caption-text').show();
+                $('label[for=caption-option]').show();
+                $('#caption-option').show();
+                $('label[for=caption-text]').show();
+                $("#caption-text-explanation").show();
+        }
+    });
     /**
      * Toggle the visibility of the caption text input depending on whether the
      user chooses automatic or no caption.
@@ -105,7 +133,6 @@ jQuery(function ($) {
         $("label.caption-text").toggle("fast");
         $("#caption-text").toggle("fast");
         $("#caption-text-explanation").toggle("fast");
-
     });
 
     /**
@@ -133,10 +160,12 @@ jQuery(function ($) {
         values['entry-type'] = null;
         values['url'] = null;
         values['unique-id'] = null;
+        values['display-format'] = null;
 
         var defaults = {
             'caption-option': 'auto',
-            'image-size': 'medium'
+            'image-size': 'medium',
+            'display-format': 'figure'
         };
 
         // Start shortcode text

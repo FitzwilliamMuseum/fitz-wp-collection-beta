@@ -57,6 +57,8 @@ class Fitzcol_Artwork_Controller
      */
     private $image_size;
 
+    private $display_type;
+
     private $image_path;
     /**
      * Shortcode attribute: caption text provided by the user.
@@ -102,6 +104,13 @@ class Fitzcol_Artwork_Controller
      */
     private $error_message;
 
+    private $sizes = array(
+      'preview',
+      'medium',
+      'large',
+      'original'
+    );
+
     /**
      * Constructor for Fitzcol_artwork_Controller class.
      *
@@ -114,8 +123,8 @@ class Fitzcol_Artwork_Controller
         $this->record_id = $this->clean_id( $attributes['id'] );
         $this->caption_option = sanitize_text_field( $attributes['caption-option'] );
         $this->caption_text = sanitize_text_field( $attributes['caption-text'] );
-        // $this->figure_size = sanitize_text_field( $attributes['figure-size'] );
         $this->image_size = sanitize_text_field( $attributes['image-size'] );
+        $this->display_type = sanitize_text_field( $attributes['display-type'] );
         $this->load_dependencies();
     }
 
@@ -131,6 +140,13 @@ class Fitzcol_Artwork_Controller
      */
     public function get_caption_option() {
         return $this->caption_option;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_display_type() {
+        return $this->display_type;
     }
 
     /**
@@ -167,6 +183,12 @@ class Fitzcol_Artwork_Controller
         $this->caption_text_display = $caption_text_display;
     }
 
+    /**
+     *
+     */
+    public function set_display_type( $display_type ) {
+        $this->display_type = $display_type;
+    }
     /**
      *
      */
@@ -278,6 +300,7 @@ class Fitzcol_Artwork_Controller
                     );
                     $this->set_caption_text_display($caption->create_caption());
                     $this->set_image_display($this->image_size);
+                    $this->set_display_type($this->display_type);
                     //display the artwork figure
                     return $this->load_artwork_template_dependency();
                 } else {
@@ -359,12 +382,6 @@ class Fitzcol_Artwork_Controller
         return true;
     }
 
-    private $sizes = array(
-      'preview',
-      'medium',
-      'large',
-      'original'
-    );
 
     public function get_image($image) {
         if(in_array($image, $this->sizes)){

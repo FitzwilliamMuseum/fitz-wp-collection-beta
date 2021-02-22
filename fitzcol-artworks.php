@@ -75,7 +75,7 @@ add_shortcode( 'artwork', 'fitzcol_display_artwork' );
  * Shortcode function for [artefact] shortcode.
  *
  * Shortcode attributes:
- * 'id' is the record id of the finds.org.uk artefact record - found on the end of the record URL.
+ * 'id' is the record id of the collection.beta.fitz.ms artefact record - found on the end of the record URL.
  * 'caption-option' can be 'none' to turn off the caption; defaults to 'auto' which displays 'caption-text'
  *  or an automatic caption if no 'caption-text' is provided.
  * 'caption-text' is the desired manual caption text.
@@ -94,7 +94,8 @@ function fitzcol_display_artwork( $attr ) {
         'caption-option' => 'auto',
         'caption-text' => '',
         'figure-size' => 'medium',
-        'image-size' => 'medium'
+        'image-size' => 'medium',
+        'display-type' => 'figure'
     ),
         $attr, 'artwork'
     );

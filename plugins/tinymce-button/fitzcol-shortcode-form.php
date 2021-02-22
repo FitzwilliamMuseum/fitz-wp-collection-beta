@@ -46,6 +46,15 @@ $shortcode_form.= "<p id='record-id-explanation' class='explanation record-id'>"
 $shortcode_form.= "</fieldset>";
 // OPTIONS //
 $shortcode_form.= "<fieldset><legend class='fitzcol-legend'>Options</legend>";
+
+// display-format
+$shortcode_form.= "<label for='display-format'>" . 'HTML display format:' . "</label>";
+$shortcode_form.= "<select id='display-format' name='display-format'>";
+$shortcode_form.= "<option value='figure' selected='selected'>" . 'Figure' . "</option>";
+$shortcode_form.= "<option value='card'>" . 'Bootstrap card' . "</option>";
+$shortcode_form.= "<option value='image'>" . 'Image only' . "</option>";
+$shortcode_form.= "</select>";
+
 // caption-option
 $shortcode_form.= "<label for='caption-option'>" . 'Caption display:' . "</label>";
 $shortcode_form.= "<select id='caption-option' name='caption-option'>";
