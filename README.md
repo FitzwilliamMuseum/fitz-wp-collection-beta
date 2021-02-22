@@ -52,13 +52,18 @@ The shortcode takes the following attributes:
 
 The plugin installs a button in the editor toolbar to make it easy to insert a shortcode.
 
+![An image showing the popup editor button installed](https://fitz-cms-images.s3.eu-west-2.amazonaws.com/screenshot-2021-02-22-at-16.45.48.png)
 
 Insert the cursor in your post where you want the shortcode to appear and press the button.
 
+![A screenshot of the editor](https://fitz-cms-images.s3.eu-west-2.amazonaws.com/screenshot-2021-02-22-at-16.48.00.png)
+
 A popup appears to take your options:
 
+![A screenshot of the plugin](https://fitz-cms-images.s3.eu-west-2.amazonaws.com/screenshot-2021-02-22-at-16.45.21.png)
 
 You can enter the artwork as:
+![A demo of code entered](https://fitz-cms-images.s3.eu-west-2.amazonaws.com/screenshot-2021-02-22-at-16.50.20.png)
 
 * URL - e.g. https://collection.beta.fitz.ms/id/object/656/
 * Record ID - which is the id found at the end of the URL e.g. 656
@@ -66,6 +71,9 @@ You can enter the artwork as:
 
 Press 'Insert Shortcode' to check your input and create your shortcode.
 
+The end result will look like this in the preview or published post:
+
+![A demo of the plugin working](https://fitz-cms-images.s3.eu-west-2.amazonaws.com/tarquin-wordpress.png)
 
 # Installation
 
