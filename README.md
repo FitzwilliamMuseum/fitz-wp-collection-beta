@@ -3,7 +3,7 @@
 A WordPress plugin that creates <a href="https://en.support.wordpress.com/shortcodes/">shortcodes</a>
 for displaying up-to-date Fitzwilliam Museum artworks on your WordPress site.
 
-This plugin is based on the work that @marychesterkadwell created for @findsorguk in 2017 for the PastExplorers project. As ever we stand on the shoulders of giants. 
+This plugin is based on the work that @mchesterkadwell created for @findsorguk in 2017 for the PastExplorers project. As ever we stand on the shoulders of giants.
 
 ## Fitzwilliam Museum Open Data
 
@@ -19,7 +19,7 @@ The simplest possible shortcode just needs the record id and inserts a picture a
 
 You can also specify a caption text and the image size*:
 
-`[artwork id=656 caption-text="An incomplete post medieval umbonate bridle boss" image-size=large]`
+`[artwork id=656 caption-text="An amazing artwork by Titian" image-size=large]`
 
 Or, if you prefer, no caption at all:
 
