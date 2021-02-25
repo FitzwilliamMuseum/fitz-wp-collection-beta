@@ -3,7 +3,7 @@
 A WordPress plugin that creates <a href="https://en.support.wordpress.com/shortcodes/">shortcodes</a>
 for displaying up-to-date Fitzwilliam Museum artworks on your WordPress site.
 
-This plugin is based on the work that @mchesterkadwell created for @findsorguk in 2017 for the PastExplorers project. As ever we stand on the shoulders of giants.
+This plugin is based on the work that [@mchesterkadwell](https://github.com/mchesterkadwell) created for [@findsorguk](https://github.com/findsorguk/) in 2017 for the PastExplorers project. As ever we stand on the shoulders of giants. [Original code](https://github.com/findsorguk/wp-findsorguk) can be found on the Portable Antiquities Scheme github repo (an endangered dataset, with software that is now 6 years old).
 
 ## Fitzwilliam Museum Open Data
 
