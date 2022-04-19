@@ -1,5 +1,8 @@
 # Fitzwilliam Museum Artworks
 
+[![DOI](https://zenodo.org/badge/340044187.svg)](https://zenodo.org/badge/latestdoi/340044187)
+
+
 A WordPress plugin that creates <a href="https://en.support.wordpress.com/shortcodes/">shortcodes</a>
 for displaying up-to-date Fitzwilliam Museum artworks on your WordPress site.
 
